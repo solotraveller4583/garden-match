@@ -28,7 +28,8 @@ body {
   display: grid;
   place-items: center;
   min-height: 100dvh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body.legal-page {
