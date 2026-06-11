@@ -1,5 +1,14 @@
-const CACHE_NAME = 'garden-match-v1';
-const ASSETS = ['./', './index.html', './styles.css', './game.js', './manifest.webmanifest', './icon.svg'];
+const CACHE_NAME = 'garden-match-v2';
+const ASSETS = [
+  './',
+  './index.html',
+  './styles.css',
+  './game.js',
+  './manifest.webmanifest',
+  './icon.svg',
+  './privacy.html',
+  './terms.html'
+];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
@@ -14,6 +23,10 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  const requestUrl = new URL(event.request.url);
+
   if (event.request.method !== 'GET') return;
+  if (requestUrl.origin !== self.location.origin) return;
+
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
 });
