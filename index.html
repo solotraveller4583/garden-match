@@ -43,6 +43,14 @@
         </label>
       </div>
 
+      <section class="badge-panel" aria-label="Unlocked milestone badges">
+        <div>
+          <p class="eyebrow">Garden badges</p>
+          <p id="badge-summary" class="badge-summary">Reach Level 5 to unlock your first badge.</p>
+        </div>
+        <div id="badge-list" class="badge-list"></div>
+      </section>
+
       <button class="primary" id="start-button">Start New Game</button>
       <button class="ghost hidden" id="continue-button">Continue Game</button>
       <button class="ghost" id="how-button">How to play</button>
@@ -70,6 +78,8 @@
         <div><span id="moves-label">24</span><small>Moves</small></div>
         <div><span id="target-label">0 / 12</span><small>Goal</small></div>
       </div>
+
+      <p id="reward-progress" class="reward-progress">Next reward at Level 5</p>
 
       <div class="board-wrap">
         <div id="board" class="board" aria-label="Puzzle board"></div>

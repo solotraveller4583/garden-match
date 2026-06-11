@@ -2,8 +2,16 @@
   'use strict';
 
   const SAVE_KEY = 'garden-match-save-v1';
+  const BADGES_KEY = 'garden-match-badges-v1';
   const TILES = ['🌼', '🍓', '🍄', '🍀', '🫐', '🌻'];
   const GOAL_TILE = '🌼';
+  const MILESTONE_BADGES = [
+    { level: 5, emoji: '🌱', name: 'Garden Beginner', message: 'You are growing your first garden!' },
+    { level: 10, emoji: '🌸', name: 'Flower Friend', message: 'Amazing! You reached Level 10 and unlocked a special flower celebration!' },
+    { level: 20, emoji: '🦋', name: 'Butterfly Garden', message: 'Butterflies have arrived in your garden!' },
+    { level: 30, emoji: '🌈', name: 'Rainbow Garden', message: 'Your garden is glowing with rainbow colors!' },
+    { level: 50, emoji: '👑', name: 'Garden Master', message: 'You completed 50 levels. You are a Garden Match Master!' }
+  ];
   const LEVELS = {
     relaxed: { moves: 32, target: 10, score: 650 },
     normal: { moves: 26, target: 13, score: 900 },
@@ -44,6 +52,9 @@
     target: document.querySelector('#target-label'),
     level: document.querySelector('#level-label'),
     goal: document.querySelector('#goal-label'),
+    rewardProgress: document.querySelector('#reward-progress'),
+    badgeList: document.querySelector('#badge-list'),
+    badgeSummary: document.querySelector('#badge-summary'),
     dialog: document.querySelector('#message-dialog'),
     dialogTitle: document.querySelector('#dialog-title'),
     dialogText: document.querySelector('#dialog-text'),
@@ -113,6 +124,7 @@
       els.sound.textContent = state.sound ? '🔊' : '🔇';
       els.home.classList.add('hidden');
       els.game.classList.remove('hidden');
+      renderBadges();
       render();
       return true;
     } catch (_) {
@@ -125,6 +137,111 @@
   function clearSavedGame() {
     localStorage.removeItem(SAVE_KEY);
     updateContinueButton();
+  }
+
+  function getUnlockedBadges() {
+    try {
+      return JSON.parse(localStorage.getItem(BADGES_KEY)) || [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function saveUnlockedBadges(levels) {
+    localStorage.setItem(BADGES_KEY, JSON.stringify([...new Set(levels)].sort((a, b) => a - b)));
+    renderBadges();
+  }
+
+  function renderBadges() {
+    if (!els.badgeList || !els.badgeSummary) return;
+    const unlocked = getUnlockedBadges();
+    els.badgeList.innerHTML = '';
+    MILESTONE_BADGES.forEach(badge => {
+      const badgeEl = document.createElement('div');
+      const isUnlocked = unlocked.includes(badge.level);
+      badgeEl.className = `badge${isUnlocked ? '' : ' locked'}`;
+      badgeEl.title = `${badge.name} — Level ${badge.level}`;
+      badgeEl.setAttribute('aria-label', `${isUnlocked ? 'Unlocked' : 'Locked'} badge: ${badge.name}, Level ${badge.level}`);
+      badgeEl.textContent = isUnlocked ? badge.emoji : '🔒';
+      const levelEl = document.createElement('small');
+      levelEl.textContent = `L${badge.level}`;
+      badgeEl.appendChild(levelEl);
+      els.badgeList.appendChild(badgeEl);
+    });
+
+    if (unlocked.length) {
+      const latest = MILESTONE_BADGES.filter(badge => unlocked.includes(badge.level)).at(-1);
+      els.badgeSummary.textContent = `${unlocked.length}/${MILESTONE_BADGES.length} unlocked. Latest: ${latest.emoji} ${latest.name}.`;
+    } else {
+      els.badgeSummary.textContent = 'Reach Level 5 to unlock your first badge.';
+    }
+  }
+
+  function nextRewardLevel() {
+    return MILESTONE_BADGES.find(badge => state.level < badge.level) || null;
+  }
+
+  function updateRewardProgress() {
+    if (!els.rewardProgress) return;
+    const next = nextRewardLevel();
+    if (next) {
+      els.rewardProgress.textContent = `Next reward: ${next.emoji} ${next.name} at Level ${next.level}`;
+    } else {
+      els.rewardProgress.textContent = 'All milestone badges unlocked — you are a Garden Master!';
+    }
+  }
+
+  function launchConfetti() {
+    const pieces = ['🌸', '🌼', '✨', '🍀', '🦋', '🌱'];
+    for (let i = 0; i < 34; i++) {
+      const piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+      piece.textContent = pieces[rand(pieces.length)];
+      piece.style.left = `${rand(100)}vw`;
+      piece.style.setProperty('--drift', `${rand(120) - 60}px`);
+      piece.style.setProperty('--fall-duration', `${1400 + rand(1300)}ms`);
+      piece.style.setProperty('--confetti-size', `${18 + rand(16)}px`);
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 3000);
+    }
+  }
+
+  function unlockMilestoneIfNeeded(completedLevel) {
+    const badge = MILESTONE_BADGES.find(item => item.level === completedLevel);
+    if (!badge) return false;
+
+    const unlocked = getUnlockedBadges();
+    if (unlocked.includes(badge.level)) return false;
+
+    saveUnlockedBadges([...unlocked, badge.level]);
+    launchConfetti();
+    makeAudio(820, 0.18);
+    showDialog(
+      `${badge.emoji} ${badge.name} Unlocked!`,
+      `${badge.message}\n\nYou reached Level ${badge.level}. Keep going to grow your badge collection! Use Share Game on the home screen to tell friends.`,
+      'Continue'
+    );
+    return true;
+  }
+
+  async function shareAchievement(badge) {
+    const shareData = {
+      title: `${badge.name} unlocked in Garden Match!`,
+      text: `I reached Level ${badge.level} in Garden Match and unlocked the ${badge.emoji} ${badge.name} badge!`,
+      url: window.location.origin + window.location.pathname.replace(/[^/]*$/, '')
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+      await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+      showDialog('Achievement copied!', 'Your achievement message was copied. Paste it anywhere to share your progress.', 'OK');
+    } catch (error) {
+      if (error && error.name === 'AbortError') return;
+      showDialog('Share your achievement', `${shareData.text}\n${shareData.url}`, 'OK');
+    }
   }
 
   function makeAudio(freq = 520, duration = 0.06, type = 'sine') {
@@ -211,6 +328,7 @@
     els.target.textContent = `${state.collected} / ${state.target}`;
     els.level.textContent = state.level;
     els.goal.textContent = `Collect ${state.target} flowers`;
+    updateRewardProgress();
   }
 
   async function onTileTap(row, col) {
@@ -376,7 +494,18 @@
     saveGame();
     if (state.collected >= state.target) {
       makeAudio(740, 0.16);
-      showDialog('Wonderful garden!', `You completed Level ${state.level}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
+      const completedLevel = state.level;
+      const unlockedMilestone = unlockMilestoneIfNeeded(completedLevel);
+      if (unlockedMilestone) {
+        els.dialog.addEventListener('close', () => {
+          showDialog('Wonderful garden!', `You completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
+            state.level++;
+            startGame();
+          });
+        }, { once: true });
+        return;
+      }
+      showDialog('Wonderful garden!', `You completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
         state.level++;
         startGame();
       });
@@ -463,4 +592,5 @@
   }
 
   updateContinueButton();
+  renderBadges();
 })();

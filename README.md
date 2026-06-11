@@ -28,6 +28,8 @@ http://localhost:8080
 - Theme: cheerful garden tiles
 - Accessibility: no timer, large tap targets, simple language, gentle sounds, hint button
 - Mobile: responsive portrait layout, PWA manifest, offline service worker
+- Progress: browser-based save/continue feature
+- Rewards: milestone badges at Levels 5, 10, 20, 30, and 50 with celebration confetti
 
 ## Security and privacy
 
