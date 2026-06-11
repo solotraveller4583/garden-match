@@ -1,4 +1,4 @@
-const CACHE_NAME = 'garden-match-v6';
+const CACHE_NAME = 'garden-match-v7';
 const ASSETS = [
   './',
   './index.html',

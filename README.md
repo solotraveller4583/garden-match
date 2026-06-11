@@ -29,7 +29,9 @@ http://localhost:8080
 - Accessibility: no timer, large tap targets, simple language, gentle sounds, hint button
 - Mobile: responsive portrait layout, PWA manifest, offline service worker
 - Progress: browser-based save/continue feature
-- Rewards: milestone badges at Levels 5, 10, 20, 30, and 50 with celebration confetti
+- Rewards: milestone badges every 5 levels from Level 5 to Level 50 with celebration confetti
+- Encouragement: every completed level shows a positive progress message
+- Difficulty: Normal and Tricky modes are tuned gentler for casual players
 
 ## Security and privacy
 

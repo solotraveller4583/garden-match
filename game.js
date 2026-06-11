@@ -8,14 +8,26 @@
   const MILESTONE_BADGES = [
     { level: 5, emoji: '🌱', name: 'Garden Beginner', message: 'You are growing your first garden!' },
     { level: 10, emoji: '🌸', name: 'Flower Friend', message: 'Amazing! You reached Level 10 and unlocked a special flower celebration!' },
+    { level: 15, emoji: '🍄', name: 'Mushroom Helper', message: 'A friendly mushroom helper joined your garden!' },
     { level: 20, emoji: '🦋', name: 'Butterfly Garden', message: 'Butterflies have arrived in your garden!' },
+    { level: 25, emoji: '🌻', name: 'Sunshine Grower', message: 'Your garden is shining brighter than ever!' },
     { level: 30, emoji: '🌈', name: 'Rainbow Garden', message: 'Your garden is glowing with rainbow colors!' },
+    { level: 35, emoji: '🐝', name: 'Busy Bee Buddy', message: 'A busy bee buddy came to cheer you on!' },
+    { level: 40, emoji: '🍀', name: 'Lucky Gardener', message: 'Lucky leaves are growing all around your garden!' },
+    { level: 45, emoji: '⭐', name: 'Star Planter', message: 'You planted a star in your magical garden!' },
     { level: 50, emoji: '👑', name: 'Garden Master', message: 'You completed 50 levels. You are a Garden Match Master!' }
   ];
+  const LEVEL_COMPLETE_MESSAGES = [
+    'Great job — your garden is growing!',
+    'Nice work! Every match makes the garden brighter.',
+    'Wonderful! You are becoming a better gardener.',
+    'Keep going — the next reward is getting closer!',
+    'Beautiful progress! Your puzzle skills are blooming.'
+  ];
   const LEVELS = {
-    relaxed: { moves: 32, target: 10, score: 650 },
-    normal: { moves: 26, target: 13, score: 900 },
-    tricky: { moves: 21, target: 16, score: 1250 }
+    relaxed: { moves: 36, target: 9, targetCap: 28, score: 650 },
+    normal: { moves: 30, target: 11, targetCap: 34, score: 900 },
+    tricky: { moves: 25, target: 14, targetCap: 40, score: 1250 }
   };
 
   const state = {
@@ -173,7 +185,7 @@
       const latest = MILESTONE_BADGES.filter(badge => unlocked.includes(badge.level)).at(-1);
       els.badgeSummary.textContent = `${unlocked.length}/${MILESTONE_BADGES.length} unlocked. Latest: ${latest.emoji} ${latest.name}.`;
     } else {
-      els.badgeSummary.textContent = 'Reach Level 5 to unlock your first badge.';
+      els.badgeSummary.textContent = 'Reach Level 5 to unlock your first badge. New badges arrive every 5 levels.';
     }
   }
 
@@ -275,8 +287,8 @@
     state.size = Number(els.size.value);
     state.difficulty = els.difficulty.value;
     const base = LEVELS[state.difficulty];
-    state.moves = Math.max(12, base.moves - (state.level - 1) * 2 + (state.size === 8 ? 3 : state.size === 6 ? -2 : 0));
-    state.target = base.target + (state.level - 1) * 2 + (state.size === 8 ? 3 : state.size === 6 ? -2 : 0);
+    state.moves = Math.max(22, base.moves - Math.floor((state.level - 1) / 4) + (state.size === 8 ? 4 : state.size === 6 ? -1 : 0));
+    state.target = Math.min(base.targetCap + (state.size === 8 ? 3 : state.size === 6 ? -1 : 0), base.target + Math.floor((state.level - 1) * 0.6) + (state.size === 8 ? 3 : state.size === 6 ? -1 : 0));
     state.score = 0;
     state.collected = 0;
     state.selected = null;
@@ -498,14 +510,16 @@
       const unlockedMilestone = unlockMilestoneIfNeeded(completedLevel);
       if (unlockedMilestone) {
         els.dialog.addEventListener('close', () => {
-          showDialog('Wonderful garden!', `You completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
+          const encouragement = LEVEL_COMPLETE_MESSAGES[(completedLevel - 1) % LEVEL_COMPLETE_MESSAGES.length];
+          showDialog('Wonderful garden!', `${encouragement}\n\nYou completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
             state.level++;
             startGame();
           });
         }, { once: true });
         return;
       }
-      showDialog('Wonderful garden!', `You completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
+      const encouragement = LEVEL_COMPLETE_MESSAGES[(completedLevel - 1) % LEVEL_COMPLETE_MESSAGES.length];
+      showDialog('Wonderful garden!', `${encouragement}\n\nYou completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
         state.level++;
         startGame();
       });
