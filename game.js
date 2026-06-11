@@ -63,9 +63,6 @@
     continue: document.querySelector('#continue-button'),
     how: document.querySelector('#how-button'),
     share: document.querySelector('#share-button'),
-    lineShare: document.querySelector('#line-share-button'),
-    whatsappShare: document.querySelector('#whatsapp-share-button'),
-    telegramShare: document.querySelector('#telegram-share-button'),
     back: document.querySelector('#back-button'),
     sound: document.querySelector('#sound-button'),
     hint: document.querySelector('#hint-button'),
@@ -590,30 +587,6 @@
     }
   }
 
-  function shareOnLine() {
-    const url = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-    const text = `Play Garden Match with me! A calm garden puzzle with badges and daily-friendly challenges. ${url}`;
-    const lineUrl = `https://line.me/R/share?text=${encodeURIComponent(text)}`;
-
-    // LINE's social plugin opens a comment-style page on desktop. The line.me share
-    // route is better for phones because it can open the LINE app friend/group picker.
-    window.location.href = lineUrl;
-  }
-
-  function shareOnWhatsApp() {
-    const url = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-    const text = `Play Garden Match with me! A calm garden puzzle with badges and daily-friendly challenges. ${url}`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
-    window.location.href = whatsappUrl;
-  }
-
-  function shareOnTelegram() {
-    const url = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-    const text = 'Play Garden Match with me! A calm garden puzzle with badges and daily-friendly challenges.';
-    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
-    window.location.href = telegramUrl;
-  }
-
   function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
   els.start.addEventListener('click', () => {
@@ -632,9 +605,6 @@
     'Got it'
   ));
   els.share.addEventListener('click', shareGame);
-  if (els.lineShare) els.lineShare.addEventListener('click', shareOnLine);
-  if (els.whatsappShare) els.whatsappShare.addEventListener('click', shareOnWhatsApp);
-  if (els.telegramShare) els.telegramShare.addEventListener('click', shareOnTelegram);
   els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.home.classList.remove('hidden'); renderBadges(); updateContinueButton(); });
   els.sound.addEventListener('click', () => { state.sound = !state.sound; els.sound.textContent = state.sound ? '🔊' : '🔇'; });
   els.hint.addEventListener('click', showHint);
