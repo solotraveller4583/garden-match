@@ -123,6 +123,7 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .primary { background: var(--primary); color: white; box-shadow: 0 12px 26px rgba(108, 99, 255, 0.28); }
 .primary:hover { background: var(--primary-dark); }
 .ghost { background: rgba(255,255,255,0.62); box-shadow: inset 0 0 0 1px rgba(36,48,66,0.1); }
+.line-button { background: #06c755; color: #fff; box-shadow: 0 12px 26px rgba(6,199,85,0.22); }
 .secondary { background: #fff; box-shadow: inset 0 0 0 1px rgba(36,48,66,0.1); padding: 0 12px; }
 .icon-button { width: 48px; background: #fff; font-size: 1.5rem; }
 
@@ -234,9 +235,107 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   border-radius: 15px;
   background: linear-gradient(180deg, #fff, #f5f7ff);
   box-shadow: 0 6px 0 rgba(36,48,66,0.10), inset 0 0 0 1px rgba(36,48,66,0.08);
-  font-size: calc(var(--tile-size) * 0.55);
   line-height: 1;
   position: relative;
+  overflow: hidden;
+}
+.tile::before,
+.tile::after {
+  content: '';
+  position: absolute;
+  display: block;
+}
+.tile-flower::before {
+  width: 58%;
+  height: 58%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #ffb347 0 20%, transparent 22%),
+    radial-gradient(circle at 50% 12%, #f7b7ff 0 18%, transparent 19%),
+    radial-gradient(circle at 88% 50%, #f7b7ff 0 18%, transparent 19%),
+    radial-gradient(circle at 50% 88%, #f7b7ff 0 18%, transparent 19%),
+    radial-gradient(circle at 12% 50%, #f7b7ff 0 18%, transparent 19%);
+}
+.tile-flower::after {
+  width: 12%;
+  height: 28%;
+  bottom: 13%;
+  background: #35a853;
+  border-radius: 8px;
+  box-shadow: -8px 8px 0 #70c978, 8px 7px 0 #70c978;
+}
+.tile-berry::before {
+  width: 48%;
+  height: 56%;
+  top: 27%;
+  border-radius: 48% 48% 54% 54%;
+  background: radial-gradient(circle at 35% 32%, #ff9aa2 0 10%, transparent 11%), linear-gradient(145deg, #ff5a76, #d93557);
+}
+.tile-berry::after {
+  width: 32%;
+  height: 20%;
+  top: 17%;
+  background: #58b368;
+  clip-path: polygon(50% 0, 62% 38%, 100% 30%, 70% 58%, 82% 100%, 50% 72%, 18% 100%, 30% 58%, 0 30%, 38% 38%);
+}
+.tile-mushroom::before {
+  width: 62%;
+  height: 38%;
+  top: 20%;
+  border-radius: 60% 60% 22% 22%;
+  background: radial-gradient(circle at 35% 45%, #fff 0 8%, transparent 9%), radial-gradient(circle at 65% 35%, #fff 0 7%, transparent 8%), linear-gradient(135deg, #ff816f, #e94655);
+}
+.tile-mushroom::after {
+  width: 30%;
+  height: 34%;
+  bottom: 18%;
+  border-radius: 9px 9px 13px 13px;
+  background: linear-gradient(180deg, #fff6dd, #efc78d);
+}
+.tile-clover::before {
+  width: 58%;
+  height: 58%;
+  background:
+    radial-gradient(circle at 35% 35%, #42c875 0 21%, transparent 22%),
+    radial-gradient(circle at 65% 35%, #42c875 0 21%, transparent 22%),
+    radial-gradient(circle at 35% 65%, #42c875 0 21%, transparent 22%),
+    radial-gradient(circle at 65% 65%, #42c875 0 21%, transparent 22%);
+}
+.tile-clover::after {
+  width: 9%;
+  height: 28%;
+  bottom: 14%;
+  transform: rotate(28deg);
+  border-radius: 8px;
+  background: #259957;
+}
+.tile-blueberry::before {
+  width: 54%;
+  height: 54%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #9ed0ff 0 10%, transparent 11%), linear-gradient(145deg, #6fa8ff, #3867d6);
+}
+.tile-blueberry::after {
+  width: 22%;
+  height: 22%;
+  top: 23%;
+  background: #3457a8;
+  clip-path: polygon(50% 0, 61% 34%, 98% 35%, 68% 56%, 79% 92%, 50% 70%, 21% 92%, 32% 56%, 2% 35%, 39% 34%);
+}
+.tile-sunflower::before {
+  width: 66%;
+  height: 66%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #7b4a1e 0 18%, transparent 19%),
+    repeating-conic-gradient(from 8deg, #ffd45a 0 12deg, #ffad33 12deg 24deg, transparent 24deg 36deg);
+}
+.tile-sunflower::after {
+  width: 12%;
+  height: 25%;
+  bottom: 12%;
+  border-radius: 8px;
+  background: #38a65a;
 }
 .tile.selected { outline: 4px solid rgba(108,99,255,0.42); transform: translateY(-3px); }
 .tile.hint { animation: pulse 700ms ease-in-out 3; }

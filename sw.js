@@ -1,4 +1,4 @@
-const CACHE_NAME = 'garden-match-v7';
+const CACHE_NAME = 'garden-match-v8';
 const ASSETS = [
   './',
   './index.html',
@@ -7,7 +7,8 @@ const ASSETS = [
   './manifest.webmanifest',
   './icon.svg',
   './privacy.html',
-  './terms.html'
+  './terms.html',
+  './credits.html'
 ];
 
 self.addEventListener('install', event => {

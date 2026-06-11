@@ -3,8 +3,16 @@
 
   const SAVE_KEY = 'garden-match-save-v1';
   const BADGES_KEY = 'garden-match-badges-v1';
-  const TILES = ['🌼', '🍓', '🍄', '🍀', '🫐', '🌻'];
-  const GOAL_TILE = '🌼';
+  const TILES = ['flower', 'berry', 'mushroom', 'clover', 'blueberry', 'sunflower'];
+  const TILE_LABELS = {
+    flower: 'garden flower',
+    berry: 'red berry',
+    mushroom: 'mushroom',
+    clover: 'clover leaf',
+    blueberry: 'blueberry',
+    sunflower: 'sunflower'
+  };
+  const GOAL_TILE = 'flower';
   const MILESTONE_BADGES = [
     { level: 5, emoji: '🌱', name: 'Garden Beginner', message: 'You are growing your first garden!' },
     { level: 10, emoji: '🌸', name: 'Flower Friend', message: 'Amazing! You reached Level 10 and unlocked a special flower celebration!' },
@@ -54,6 +62,7 @@
     continue: document.querySelector('#continue-button'),
     how: document.querySelector('#how-button'),
     share: document.querySelector('#share-button'),
+    lineShare: document.querySelector('#line-share-button'),
     back: document.querySelector('#back-button'),
     sound: document.querySelector('#sound-button'),
     hint: document.querySelector('#hint-button'),
@@ -114,10 +123,10 @@
       const raw = localStorage.getItem(SAVE_KEY);
       if (!raw) return false;
       const saved = JSON.parse(raw);
-      if (!saved || saved.version !== 1 || !Array.isArray(saved.board)) return false;
-      if (!Number.isInteger(saved.size) || saved.size < 6 || saved.size > 8) return false;
-      if (!LEVELS[saved.difficulty]) return false;
-      if (saved.board.length !== saved.size || !saved.board.every(row => Array.isArray(row) && row.length === saved.size)) return false;
+      if (!saved || saved.version !== 1 || !Array.isArray(saved.board)) throw new Error('Invalid save data');
+      if (!Number.isInteger(saved.size) || saved.size < 6 || saved.size > 8) throw new Error('Invalid saved board size');
+      if (!LEVELS[saved.difficulty]) throw new Error('Invalid saved difficulty');
+      if (saved.board.length !== saved.size || !saved.board.every(row => Array.isArray(row) && row.length === saved.size && row.every(tile => TILES.includes(tile)))) throw new Error('Outdated saved board');
 
       state.size = saved.size;
       state.difficulty = saved.difficulty;
@@ -320,12 +329,13 @@
     for (let row = 0; row < state.size; row++) {
       for (let col = 0; col < state.size; col++) {
         const button = document.createElement('button');
-        button.className = 'tile';
+        const tileValue = get(row, col);
+        button.className = `tile tile-${tileValue}`;
         button.type = 'button';
         button.dataset.row = row;
         button.dataset.col = col;
-        button.textContent = get(row, col);
-        button.setAttribute('aria-label', `${get(row, col)} tile at row ${row + 1}, column ${col + 1}`);
+        button.dataset.tile = tileValue;
+        button.setAttribute('aria-label', `${TILE_LABELS[tileValue] || 'garden'} tile at row ${row + 1}, column ${col + 1}`);
         if (state.selected && state.selected.row === row && state.selected.col === col) button.classList.add('selected');
         button.addEventListener('click', () => onTileTap(row, col));
         els.board.appendChild(button);
@@ -577,6 +587,13 @@
     }
   }
 
+  function shareOnLine() {
+    const url = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+    const text = `Play Garden Match with me! A calm garden puzzle with badges and daily-friendly challenges. ${url}`;
+    const lineUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+    window.open(lineUrl, '_blank', 'noopener,noreferrer');
+  }
+
   function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
   els.start.addEventListener('click', () => {
@@ -595,7 +612,8 @@
     'Got it'
   ));
   els.share.addEventListener('click', shareGame);
-  els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.home.classList.remove('hidden'); });
+  if (els.lineShare) els.lineShare.addEventListener('click', shareOnLine);
+  els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.home.classList.remove('hidden'); renderBadges(); updateContinueButton(); });
   els.sound.addEventListener('click', () => { state.sound = !state.sound; els.sound.textContent = state.sound ? '🔊' : '🔇'; });
   els.hint.addEventListener('click', showHint);
   els.shuffle.addEventListener('click', () => !state.busy && shuffleBoard(true));
