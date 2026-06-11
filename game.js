@@ -64,6 +64,7 @@
     how: document.querySelector('#how-button'),
     share: document.querySelector('#share-button'),
     lineShare: document.querySelector('#line-share-button'),
+    whatsappShare: document.querySelector('#whatsapp-share-button'),
     back: document.querySelector('#back-button'),
     sound: document.querySelector('#sound-button'),
     hint: document.querySelector('#hint-button'),
@@ -598,6 +599,13 @@
     window.location.href = lineUrl;
   }
 
+  function shareOnWhatsApp() {
+    const url = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+    const text = `Play Garden Match with me! A calm garden puzzle with badges and daily-friendly challenges. ${url}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.location.href = whatsappUrl;
+  }
+
   function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
   els.start.addEventListener('click', () => {
@@ -617,6 +625,7 @@
   ));
   els.share.addEventListener('click', shareGame);
   if (els.lineShare) els.lineShare.addEventListener('click', shareOnLine);
+  if (els.whatsappShare) els.whatsappShare.addEventListener('click', shareOnWhatsApp);
   els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.home.classList.remove('hidden'); renderBadges(); updateContinueButton(); });
   els.sound.addEventListener('click', () => { state.sound = !state.sound; els.sound.textContent = state.sound ? '🔊' : '🔇'; });
   els.hint.addEventListener('click', showHint);
