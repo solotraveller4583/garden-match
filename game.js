@@ -31,6 +31,7 @@
     difficulty: document.querySelector('#difficulty-select'),
     start: document.querySelector('#start-button'),
     how: document.querySelector('#how-button'),
+    share: document.querySelector('#share-button'),
     back: document.querySelector('#back-button'),
     sound: document.querySelector('#sound-button'),
     hint: document.querySelector('#hint-button'),
@@ -335,6 +336,29 @@
     render();
   }
 
+  async function shareGame() {
+    const shareData = {
+      title: 'Garden Match',
+      text: 'Play Garden Match — a calm puzzle game for all ages!',
+      url: window.location.origin + window.location.pathname.replace(/[^/]*$/, '')
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        makeAudio(650, 0.05);
+        return;
+      }
+
+      await navigator.clipboard.writeText(shareData.url);
+      makeAudio(650, 0.05);
+      showDialog('Link copied!', 'The Garden Match link was copied. You can paste it into LINE, WhatsApp, Facebook, or anywhere you want to share it.', 'Nice');
+    } catch (error) {
+      if (error && error.name === 'AbortError') return;
+      showDialog('Share this link', shareData.url, 'OK');
+    }
+  }
+
   function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
   els.start.addEventListener('click', () => { state.level = 1; startGame(); });
@@ -343,6 +367,7 @@
     'Tap one tile, then tap a neighbor to swap them.\n\nMatch 3 or more of the same garden tile in a row or column.\n\nCollect the flower goal before your moves run out. Use Hint if you get stuck — this game is meant to be kind.',
     'Got it'
   ));
+  els.share.addEventListener('click', shareGame);
   els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.home.classList.remove('hidden'); });
   els.sound.addEventListener('click', () => { state.sound = !state.sound; els.sound.textContent = state.sound ? '🔊' : '🔇'; });
   els.hint.addEventListener('click', showHint);
