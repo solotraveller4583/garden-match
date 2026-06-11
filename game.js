@@ -62,6 +62,7 @@
   }
 
   function updateContinueButton() {
+    if (!els.continue) return;
     els.continue.classList.toggle('hidden', !hasSavedGame());
   }
 
@@ -440,9 +441,11 @@
     state.level = 1;
     startGame();
   });
-  els.continue.addEventListener('click', () => {
-    if (!loadSavedGame()) showDialog('No saved game', 'There is no saved game on this device yet. Start a new game to create one.', 'OK');
-  });
+  if (els.continue) {
+    els.continue.addEventListener('click', () => {
+      if (!loadSavedGame()) showDialog('No saved game', 'There is no saved game on this device yet. Start a new game to create one.', 'OK');
+    });
+  }
   els.how.addEventListener('click', () => showDialog(
     'How to play',
     'Tap one tile, then tap a neighbor to swap them.\n\nMatch 3 or more of the same garden tile in a row or column.\n\nCollect the flower goal before your moves run out. Use Hint if you get stuck — this game is meant to be kind.',
