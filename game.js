@@ -5,14 +5,15 @@
   const BADGES_KEY = 'garden-match-badges-v1';
   const TILES = ['flower', 'berry', 'mushroom', 'clover', 'blueberry', 'sunflower'];
   const TILE_LABELS = {
-    flower: 'garden flower',
+    flower: 'pink flower',
     berry: 'red berry',
     mushroom: 'mushroom',
     clover: 'clover leaf',
     blueberry: 'blueberry',
-    sunflower: 'sunflower'
+    sunflower: 'sunshine bloom'
   };
   const GOAL_TILE = 'flower';
+  const GOAL_NAME = 'pink flowers';
   const MILESTONE_BADGES = [
     { level: 5, emoji: '🌱', name: 'Garden Beginner', message: 'You are growing your first garden!' },
     { level: 10, emoji: '🌸', name: 'Flower Friend', message: 'Amazing! You reached Level 10 and unlocked a special flower celebration!' },
@@ -349,7 +350,7 @@
     els.moves.textContent = state.moves;
     els.target.textContent = `${state.collected} / ${state.target}`;
     els.level.textContent = state.level;
-    els.goal.textContent = `Collect ${state.target} flowers`;
+    els.goal.textContent = `Collect ${state.target} ${GOAL_NAME}`;
     updateRewardProgress();
   }
 
@@ -590,8 +591,11 @@
   function shareOnLine() {
     const url = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
     const text = `Play Garden Match with me! A calm garden puzzle with badges and daily-friendly challenges. ${url}`;
-    const lineUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
-    window.open(lineUrl, '_blank', 'noopener,noreferrer');
+    const lineUrl = `https://line.me/R/share?text=${encodeURIComponent(text)}`;
+
+    // LINE's social plugin opens a comment-style page on desktop. The line.me share
+    // route is better for phones because it can open the LINE app friend/group picker.
+    window.location.href = lineUrl;
   }
 
   function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
@@ -608,7 +612,7 @@
   }
   els.how.addEventListener('click', () => showDialog(
     'How to play',
-    'Tap one tile, then tap a neighbor to swap them.\n\nMatch 3 or more of the same garden tile in a row or column.\n\nCollect the flower goal before your moves run out. Use Hint if you get stuck — this game is meant to be kind.',
+    'Tap one tile, then tap a neighbor to swap them.\n\nMatch 3 or more of the same garden tile in a row or column.\n\nYour goal tile is the pink flower with the orange center. Collect enough pink flowers before your moves run out. Use Hint if you get stuck — this game is meant to be kind.',
     'Got it'
   ));
   els.share.addEventListener('click', shareGame);
