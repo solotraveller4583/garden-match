@@ -1,54 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Garden Match icon">
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#fff1fa"/>
-      <stop offset="0.5" stop-color="#ffd8ef"/>
-      <stop offset="1" stop-color="#ffb8df"/>
+      <stop offset="0" stop-color="#fff5fb"/>
+      <stop offset="1" stop-color="#ffd9ef"/>
     </linearGradient>
     <linearGradient id="card" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0" stop-color="#ffffff"/>
       <stop offset="1" stop-color="#fff8fd"/>
     </linearGradient>
+    <linearGradient id="stem" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#1fb85d"/>
+      <stop offset="1" stop-color="#128a44"/>
+    </linearGradient>
     <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#9c3f78" flood-opacity=".20"/>
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#9b3f77" flood-opacity=".18"/>
     </filter>
   </defs>
 
-  <rect width="512" height="512" rx="118" fill="url(#bg)"/>
-  <circle cx="84" cy="96" r="30" fill="#fff" opacity=".56"/>
-  <circle cx="424" cy="118" r="20" fill="#fff" opacity=".6"/>
-
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
   <g filter="url(#shadow)">
     <rect x="82" y="82" width="348" height="348" rx="88" fill="url(#card)"/>
-    <rect x="102" y="102" width="308" height="308" rx="72" fill="none" stroke="#ffffff" stroke-width="8" opacity=".85"/>
+    <rect x="102" y="102" width="308" height="308" rx="72" fill="none" stroke="#ffffff" stroke-width="8" opacity=".84"/>
 
-    <g transform="translate(256 236)">
-      <!-- flower petals -->
-      <g fill="#ff5fd2">
-        <ellipse rx="45" ry="70" transform="translate(0 -78)"/>
-        <ellipse rx="45" ry="70" transform="translate(78 0) rotate(90)"/>
-        <ellipse rx="45" ry="70" transform="translate(0 78) rotate(180)"/>
-        <ellipse rx="45" ry="70" transform="translate(-78 0) rotate(270)"/>
+    <g transform="translate(256 234)">
+      <g fill="#ff58d1">
+        <ellipse rx="40" ry="72" transform="translate(0 -78)"/>
+        <ellipse rx="40" ry="72" transform="translate(78 0) rotate(90)"/>
+        <ellipse rx="40" ry="72" transform="translate(0 78) rotate(180)"/>
+        <ellipse rx="40" ry="72" transform="translate(-78 0) rotate(270)"/>
       </g>
-
-      <!-- center -->
-      <circle r="46" fill="#ff8b1f"/>
-      <circle r="29" fill="#ffe65a"/>
-      <circle cx="-10" cy="-10" r="7" fill="#fff" opacity=".72"/>
-
-      <!-- friendly face -->
-      <circle cx="-12" cy="2" r="4.2" fill="#5c3b2f"/>
-      <circle cx="12" cy="2" r="4.2" fill="#5c3b2f"/>
-      <path d="M-10 18c5.5 6.5 14.5 6.5 20 0" fill="none" stroke="#5c3b2f" stroke-width="4.2" stroke-linecap="round"/>
-
-      <!-- stem + leaves -->
-      <rect x="-6" y="48" width="12" height="78" rx="6" fill="#16a34a"/>
-      <ellipse cx="-34" cy="92" rx="26" ry="15" fill="#61dc7e" transform="rotate(-22 -34 92)"/>
-      <ellipse cx="34" cy="92" rx="26" ry="15" fill="#61dc7e" transform="rotate(22 34 92)"/>
+      <circle r="46" fill="#ff8d24"/>
+      <circle r="30" fill="#ffe76c"/>
+      <circle cx="-10" cy="-10" r="7" fill="#fff" opacity=".75"/>
+      <rect x="-6" y="48" width="12" height="80" rx="6" fill="url(#stem)"/>
+      <ellipse cx="-34" cy="92" rx="24" ry="14" fill="#67e48b" transform="rotate(-22 -34 92)"/>
+      <ellipse cx="34" cy="92" rx="24" ry="14" fill="#67e48b" transform="rotate(22 34 92)"/>
     </g>
-
-    <!-- tiny sparkles -->
-    <path d="M408 70l10 22 24 4-17 16 4 24-21-11-21 11 4-24-17-16 24-4z" fill="#fff" opacity=".9"/>
-    <path d="M120 142l8 17 18 3-13 12 3 18-16-9-16 9 3-18-13-12 18-3z" fill="#fff" opacity=".72"/>
   </g>
 </svg>
