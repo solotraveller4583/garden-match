@@ -1034,13 +1034,13 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
 .logo {
   border-radius: 32px;
   background:
-    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.96) 0 7%, transparent 8%),
-    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.5) 0 8%, transparent 9%),
-    linear-gradient(145deg, #fff8bf 0%, #a7f5c8 47%, #93d8ff 100%);
+    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.95) 0 7%, transparent 8%),
+    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.45) 0 8%, transparent 9%),
+    linear-gradient(145deg, #ffe1f4 0%, #ffacd9 48%, #ff84cf 100%);
   box-shadow:
-    inset 0 -14px 20px rgba(24, 111, 83, 0.12),
+    inset 0 -14px 20px rgba(171, 56, 131, 0.12),
     inset 0 0 0 2px rgba(255,255,255,0.78),
-    0 16px 32px rgba(73, 160, 132, 0.22);
+    0 16px 32px rgba(183, 85, 154, 0.24);
 }
 .logo::after { content: '✨'; right: 10px; top: 8px; font-size: 16px; }
 .logo-flower {
@@ -1048,9 +1048,9 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
   height: 72px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 40% 44%, #453227 0 4%, transparent 5%),
-    radial-gradient(circle at 60% 44%, #453227 0 4%, transparent 5%),
-    radial-gradient(circle at 50% 60%, #ff9fbf 0 5%, transparent 6%),
+    radial-gradient(circle at 40% 44%, #7a294f 0 4%, transparent 5%),
+    radial-gradient(circle at 60% 44%, #7a294f 0 4%, transparent 5%),
+    radial-gradient(circle at 50% 60%, #ffbbd7 0 5%, transparent 6%),
     radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0 18%, transparent 19%);
 }
 .logo-flower::before {
@@ -1060,12 +1060,12 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
   height: 56px;
   background:
     radial-gradient(circle at 50% 49%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
-    radial-gradient(ellipse at 50% 8%, #ff62df 0 16%, transparent 17%),
-    radial-gradient(ellipse at 86% 34%, #ff62df 0 17%, transparent 18%),
-    radial-gradient(ellipse at 73% 83%, #ff62df 0 16%, transparent 17%),
-    radial-gradient(ellipse at 27% 83%, #ff62df 0 16%, transparent 17%),
-    radial-gradient(ellipse at 14% 34%, #ff62df 0 17%, transparent 18%);
-  filter: drop-shadow(0 8px 10px rgba(118, 62, 154, 0.26));
+    radial-gradient(ellipse at 50% 8%, #ff5fd2 0 16%, transparent 17%),
+    radial-gradient(ellipse at 86% 34%, #ff5fd2 0 17%, transparent 18%),
+    radial-gradient(ellipse at 73% 83%, #ff5fd2 0 16%, transparent 17%),
+    radial-gradient(ellipse at 27% 83%, #ff5fd2 0 16%, transparent 17%),
+    radial-gradient(ellipse at 14% 34%, #ff5fd2 0 17%, transparent 18%);
+  filter: drop-shadow(0 8px 10px rgba(180, 70, 148, 0.26));
 }
 .logo-flower::after { left: 31px; width: 10px; height: 29px; border-radius: 12px; }
 .hero h1 { letter-spacing: -0.07em; }
@@ -1525,13 +1525,13 @@ body { overflow: hidden; }
 .logo {
   border-radius: 32px;
   background:
-    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.96) 0 7%, transparent 8%),
-    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.5) 0 8%, transparent 9%),
-    linear-gradient(145deg, #fff8bf 0%, #a7f5c8 47%, #93d8ff 100%);
+    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.95) 0 7%, transparent 8%),
+    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.45) 0 8%, transparent 9%),
+    linear-gradient(145deg, #ffe1f4 0%, #ffacd9 48%, #ff84cf 100%);
   box-shadow:
-    inset 0 -14px 20px rgba(24, 111, 83, 0.12),
+    inset 0 -14px 20px rgba(171, 56, 131, 0.12),
     inset 0 0 0 2px rgba(255,255,255,0.78),
-    0 16px 32px rgba(73, 160, 132, 0.22);
+    0 16px 32px rgba(183, 85, 154, 0.24);
 }
 .logo::after { content: '✨'; right: 10px; top: 8px; font-size: 16px; }
 .logo-flower {
@@ -1539,9 +1539,9 @@ body { overflow: hidden; }
   height: 72px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 40% 44%, #453227 0 4%, transparent 5%),
-    radial-gradient(circle at 60% 44%, #453227 0 4%, transparent 5%),
-    radial-gradient(circle at 50% 60%, #ff9fbf 0 5%, transparent 6%),
+    radial-gradient(circle at 40% 44%, #7a294f 0 4%, transparent 5%),
+    radial-gradient(circle at 60% 44%, #7a294f 0 4%, transparent 5%),
+    radial-gradient(circle at 50% 60%, #ffbbd7 0 5%, transparent 6%),
     radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0 18%, transparent 19%);
 }
 .logo-flower::before {
@@ -1551,12 +1551,12 @@ body { overflow: hidden; }
   height: 56px;
   background:
     radial-gradient(circle at 50% 49%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
-    radial-gradient(ellipse at 50% 8%, #ff62df 0 16%, transparent 17%),
-    radial-gradient(ellipse at 86% 34%, #ff62df 0 17%, transparent 18%),
-    radial-gradient(ellipse at 73% 83%, #ff62df 0 16%, transparent 17%),
-    radial-gradient(ellipse at 27% 83%, #ff62df 0 16%, transparent 17%),
-    radial-gradient(ellipse at 14% 34%, #ff62df 0 17%, transparent 18%);
-  filter: drop-shadow(0 8px 10px rgba(118, 62, 154, 0.26));
+    radial-gradient(ellipse at 50% 8%, #ff5fd2 0 16%, transparent 17%),
+    radial-gradient(ellipse at 86% 34%, #ff5fd2 0 17%, transparent 18%),
+    radial-gradient(ellipse at 73% 83%, #ff5fd2 0 16%, transparent 17%),
+    radial-gradient(ellipse at 27% 83%, #ff5fd2 0 16%, transparent 17%),
+    radial-gradient(ellipse at 14% 34%, #ff5fd2 0 17%, transparent 18%);
+  filter: drop-shadow(0 8px 10px rgba(180, 70, 148, 0.26));
 }
 .logo-flower::after { left: 31px; width: 10px; height: 29px; border-radius: 12px; }
 .hero h1 { letter-spacing: -0.07em; }
