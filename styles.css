@@ -134,30 +134,30 @@ body.legal-page .app-shell {
 .logo-flower::before {
   content: '';
   position: absolute;
-  left: 7px;
-  top: 2px;
-  width: 52px;
-  height: 52px;
+  left: 6px;
+  top: 1px;
+  width: 54px;
+  height: 50px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 50%, #ff8a22 0 13%, #ffd064 14% 20%, transparent 21%),
-    radial-gradient(ellipse at 50% 7%, #ff8ff4 0 18%, transparent 19%),
-    radial-gradient(ellipse at 87% 30%, #ff8ff4 0 18%, transparent 19%),
-    radial-gradient(ellipse at 76% 84%, #ff8ff4 0 18%, transparent 19%),
-    radial-gradient(ellipse at 24% 84%, #ff8ff4 0 18%, transparent 19%),
-    radial-gradient(ellipse at 13% 30%, #ff8ff4 0 18%, transparent 19%);
+    radial-gradient(circle at 50% 50%, #ff7f1f 0 12%, #ffe15a 13% 20%, transparent 21%),
+    radial-gradient(ellipse at 50% 8%, #ff67f0 0 17%, transparent 18%),
+    radial-gradient(ellipse at 86% 32%, #ff67f0 0 18%, transparent 19%),
+    radial-gradient(ellipse at 72% 82%, #ff67f0 0 17%, transparent 18%),
+    radial-gradient(ellipse at 28% 82%, #ff67f0 0 17%, transparent 18%),
+    radial-gradient(ellipse at 14% 32%, #ff67f0 0 18%, transparent 19%);
   filter: drop-shadow(0 7px 9px rgba(118, 62, 154, 0.28));
 }
 .logo-flower::after {
   content: '';
   position: absolute;
   left: 29px;
-  bottom: 1px;
-  width: 10px;
-  height: 30px;
+  bottom: 0;
+  width: 9px;
+  height: 25px;
   border-radius: 10px;
-  background: linear-gradient(#26bc66, #15974f);
-  box-shadow: -18px 12px 0 -4px #5bd577, 18px 12px 0 -4px #5bd577;
+  background: linear-gradient(#25d76d, #129a50);
+  box-shadow: -17px 9px 0 -4px #5bd577, 17px 9px 0 -4px #5bd577;
 }
 
 .eyebrow {
@@ -439,6 +439,13 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   background: rgba(255, 255, 255, 0.62);
   box-shadow: inset 0 0 0 1px rgba(36,48,66,0.08);
 }
+.rewards-road {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(255, 213, 79, 0.24), transparent 28%),
+    linear-gradient(135deg, rgba(246,255,241,0.88), rgba(255,255,255,0.74));
+  border-radius: 22px;
+  padding: 12px;
+}
 
 .badge-summary {
   margin: 0;
@@ -446,6 +453,49 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   line-height: 1.25;
   font-size: 0.84rem;
 }
+
+.mini-map {
+  position: relative;
+  min-height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #dff8ff 0 50%, #a9efb8 51% 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.68);
+  overflow: hidden;
+}
+.mini-map.locked { filter: saturate(0.78); }
+.mini-path {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 52%;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,213,79,0.92), rgba(255,255,255,0.5));
+}
+.mini-node {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.86);
+  box-shadow: 0 6px 12px rgba(52, 105, 73, 0.14), inset 0 0 0 2px rgba(255,255,255,0.9);
+  font-size: 1.1rem;
+}
+.mini-node small {
+  position: absolute;
+  right: -2px;
+  bottom: -7px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 0.5rem;
+  font-weight: 950;
+}
+.mini-node.locked { opacity: 0.42; filter: grayscale(1); }
+.mini-node.unlocked { background: linear-gradient(145deg, #fff, #fff9d8); transform: translateY(-2px); }
 
 .badge-list {
   display: grid;
@@ -479,13 +529,15 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 }
 
 .reward-progress {
-  margin: -2px 0 0;
-  padding: 10px 12px;
+  margin: -3px 0 0;
+  padding: 8px 10px;
   text-align: center;
-  border-radius: 16px;
+  border-radius: 15px;
   color: var(--primary-dark);
   background: rgba(255,255,255,0.62);
   font-weight: 900;
+  font-size: 0.9rem;
+  line-height: 1.22;
   box-shadow: inset 0 0 0 1px rgba(108,99,255,0.12);
 }
 
@@ -500,20 +552,21 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 
 .hidden { display: none !important; }
 
-.game { display: grid; gap: 15px; }
-.game-header { display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 10px; }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.game { display: grid; gap: 12px; }
+.game-header { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; gap: 9px; }
+.game-header h2 { font-size: clamp(1.45rem, 6vw, 2rem); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .stats > div {
   display: grid;
   place-items: center;
-  padding: 10px 6px;
+  padding: 10px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.62);
 }
-.stats span { font-size: 1.18rem; font-weight: 950; }
-.stats small { color: var(--muted); font-weight: 800; }
+.stats span { font-size: 1.1rem; font-weight: 950; }
+.stats small { color: var(--muted); font-weight: 800; font-size: 0.78rem; }
 
-.board-wrap { display: grid; place-items: center; padding: 10px; border-radius: 24px; background: rgba(255,255,255,0.58); }
+.board-wrap { display: grid; place-items: center; padding: 8px; border-radius: 22px; background: rgba(255,255,255,0.58); }
 .board {
   display: grid;
   gap: 6px;
@@ -524,6 +577,7 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .tile {
   width: var(--tile-size);
   height: var(--tile-size);
+  min-height: 0 !important;
   display: grid;
   place-items: center;
   border: 0;
@@ -548,28 +602,28 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   box-shadow: 0 7px 0 rgba(124, 73, 145, 0.12), inset 0 0 0 2px rgba(229, 134, 255, 0.30);
 }
 .tile-flower::before {
-  width: 82%;
-  height: 76%;
-  left: 9%;
-  top: 4%;
+  width: 84%;
+  height: 72%;
+  left: 8%;
+  top: 5%;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 50%, #ff7a1a 0 15%, #ffd34e 16% 23%, transparent 24%),
-    radial-gradient(ellipse at 50% 7%, #f47cff 0 20%, transparent 21%),
-    radial-gradient(ellipse at 88% 31%, #f47cff 0 20%, transparent 21%),
-    radial-gradient(ellipse at 76% 84%, #f47cff 0 20%, transparent 21%),
-    radial-gradient(ellipse at 24% 84%, #f47cff 0 20%, transparent 21%),
-    radial-gradient(ellipse at 12% 31%, #f47cff 0 20%, transparent 21%);
+    radial-gradient(circle at 50% 50%, #ff741f 0 14%, #ffe154 15% 23%, transparent 24%),
+    radial-gradient(ellipse at 50% 7%, #ff61ee 0 19%, transparent 20%),
+    radial-gradient(ellipse at 88% 31%, #ff61ee 0 20%, transparent 21%),
+    radial-gradient(ellipse at 75% 84%, #ff61ee 0 19%, transparent 20%),
+    radial-gradient(ellipse at 25% 84%, #ff61ee 0 19%, transparent 20%),
+    radial-gradient(ellipse at 12% 31%, #ff61ee 0 20%, transparent 21%);
   filter: drop-shadow(0 4px 6px rgba(117, 44, 152, 0.28));
 }
 .tile-flower::after {
-  width: 15%;
-  height: 34%;
-  left: 43%;
-  bottom: 4%;
-  background: linear-gradient(#2bd66d, #159a50);
+  width: 13%;
+  height: 31%;
+  left: 44%;
+  bottom: 5%;
+  background: linear-gradient(#28da70, #14984e);
   border-radius: 10px;
-  box-shadow: -12px 10px 0 -2px #62d878, 12px 10px 0 -2px #62d878;
+  box-shadow: -11px 8px 0 -3px #62d878, 11px 8px 0 -3px #62d878;
 }
 .tile-berry::before {
   width: 48%;
@@ -679,6 +733,7 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 }
 
 @media (max-width: 520px) {
+  :root { --tile-size: 38px; }
   .app-shell { padding-inline: 10px; padding-top: 10px; }
   .hero-top { grid-template-columns: 72px 1fr; gap: 12px; }
   .logo { width: 72px; height: 72px; border-radius: 24px; }
@@ -688,20 +743,32 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   .hero .intro { font-size: 0.92rem; line-height: 1.34; }
   .feature-chips { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
   .feature-chips span { min-height: 34px; font-size: 0.76rem; }
-  .garden-preview { grid-template-columns: 1fr 94px; padding: 11px; gap: 10px; }
-  .garden-preview strong { font-size: 0.95rem; }
-  .garden-preview span { font-size: 0.82rem; }
-  .garden-scene { min-height: 82px; }
-  .garden-house { left: 34px; top: 29px; font-size: 29px; }
   .goal-card { grid-template-columns: 52px 1fr; padding: 10px; }
   .home-actions { grid-template-columns: 1fr 1fr; }
   .home-actions .primary { min-height: 54px; }
-  .settings-grid { grid-template-columns: 1fr; }
+  .settings-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  select { padding: 11px 10px; }
+  .mini-map { min-height: 52px; }
+  .mini-node { width: 32px; height: 32px; border-radius: 12px; font-size: 1rem; }
   .badge-list { grid-template-columns: repeat(5, 1fr); }
+  .game { gap: 8px; padding: 12px; border-radius: 24px; }
+  .game-header { grid-template-columns: 40px 1fr 40px; gap: 8px; }
+  .game-header h2 { font-size: clamp(1.35rem, 7vw, 1.75rem); line-height: 1.05; }
+  .icon-button { width: 40px; min-height: 40px; }
+  .stats { gap: 6px; }
+  .stats > div { padding: 7px 4px; border-radius: 15px; }
+  .stats span { font-size: 1rem; }
+  .stats small { font-size: 0.7rem; }
+  .reward-progress { padding: 7px 9px; font-size: 0.82rem; }
+  .board-wrap { padding: 5px; border-radius: 18px; }
+  .board { gap: 4px; }
+  .tile { border-radius: 13px; }
+  .actions { gap: 7px; }
+  .actions button { min-height: 40px; font-size: 0.86rem; }
 }
 
 @media (max-width: 390px), (max-height: 700px) {
-  :root { --tile-size: 38px; }
+  :root { --tile-size: 34px; }
   .app-shell { padding-inline: 8px; padding-top: 8px; }
   .card { padding: 12px; border-radius: 22px; }
   .hero { gap: 9px; }

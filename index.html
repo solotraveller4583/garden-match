@@ -43,21 +43,6 @@
         <span>🌿 No Timer</span>
       </div>
 
-      <section class="garden-preview" aria-label="Your garden preview">
-        <div>
-          <p class="eyebrow">Your garden grows</p>
-          <strong>Unlock flowers, bees, butterflies, and a garden crown.</strong>
-          <span>Reach higher levels to see your garden become more magical.</span>
-        </div>
-        <div class="garden-scene" aria-hidden="true">
-          <span class="garden-house">⌂</span>
-          <span class="garden-bloom bloom-1">🌱</span>
-          <span class="garden-bloom bloom-2">🌷</span>
-          <span class="garden-bloom bloom-3">🦋</span>
-          <span class="garden-bloom bloom-4">✨</span>
-        </div>
-      </section>
-
       <div class="goal-card" aria-label="Game goal">
         <div class="goal-icon tile-demo tile-flower" aria-hidden="true"></div>
         <div>
@@ -95,34 +80,23 @@
         </div>
       </section>
 
-      <section class="garden-map-card" id="garden-map-card" aria-label="Garden map progress">
-        <div class="map-heading">
-          <div>
-            <p class="eyebrow" id="garden-map-kicker">Unlocks at Level 5</p>
-            <h2 id="garden-map-title">Garden Map</h2>
-            <p id="garden-map-summary">Clear Level 5 to open your first garden area.</p>
-          </div>
-          <span class="map-badge" id="garden-map-badge">🔒 L5</span>
-        </div>
-        <div class="garden-map" id="garden-map" aria-hidden="true">
-          <div class="map-path"></div>
-          <div class="map-node node-l5 locked"><span>🌱</span><small>L5</small></div>
-          <div class="map-node node-l10 locked"><span>🌷</span><small>L10</small></div>
-          <div class="map-node node-l20 locked"><span>🦋</span><small>L20</small></div>
-          <div class="map-node node-l35 locked"><span>🐝</span><small>L35</small></div>
-          <div class="map-node node-l50 locked"><span>👑</span><small>L50</small></div>
-        </div>
-      </section>
-
-      <section class="badge-panel" aria-label="Unlocked milestone badges">
+      <section class="badge-panel rewards-road" aria-label="Garden rewards road">
         <div class="badge-heading">
           <div>
-            <p class="eyebrow">Badge road</p>
-            <p id="badge-summary" class="badge-summary">Reach Level 5 to unlock Seedling Gardener.</p>
+            <p class="eyebrow" id="garden-map-kicker">Unlocks at Level 5</p>
+            <p id="badge-summary" class="badge-summary">Clear Level 5 to unlock your Garden Map and first badge.</p>
           </div>
-          <span class="badge-count">10 rewards</span>
+          <span class="badge-count" id="garden-map-badge">🔒 L5</span>
         </div>
-        <div id="badge-list" class="badge-list"></div>
+        <div class="mini-map" id="garden-map" aria-label="Garden map progress">
+          <div class="mini-path"></div>
+          <div class="mini-node node-l5 locked"><span>🌱</span><small>L5</small></div>
+          <div class="mini-node node-l10 locked"><span>🌷</span><small>L10</small></div>
+          <div class="mini-node node-l20 locked"><span>🦋</span><small>L20</small></div>
+          <div class="mini-node node-l35 locked"><span>🐝</span><small>L35</small></div>
+          <div class="mini-node node-l50 locked"><span>👑</span><small>L50</small></div>
+        </div>
+        <div id="badge-list" class="badge-list compact-badges"></div>
       </section>
 
       <nav class="footer-links" aria-label="Legal and privacy links">

@@ -187,7 +187,7 @@
     const mapLevels = [5, 10, 20, 35, 50];
 
     els.gardenMap.classList.toggle('locked', !hasMap);
-    els.gardenMap.querySelectorAll('.map-node').forEach(node => {
+    els.gardenMap.querySelectorAll('.mini-node').forEach(node => {
       const level = Number((node.className.match(/node-l(\d+)/) || [])[1]);
       const isUnlocked = unlocked.includes(level) || highest >= level;
       node.classList.toggle('unlocked', isUnlocked);
@@ -196,14 +196,12 @@
 
     if (hasMap) {
       const nextLevel = mapLevels.find(level => highest < level);
-      if (els.gardenMapKicker) els.gardenMapKicker.textContent = 'Your garden map';
-      if (els.gardenMapTitle) els.gardenMapTitle.textContent = 'Garden Map Unlocked';
-      if (els.gardenMapSummary) els.gardenMapSummary.textContent = nextLevel ? `Your garden has started growing. Reach Level ${nextLevel} to unlock the next area.` : 'Your full garden is blooming — you are a Garden Master!';
+      if (els.gardenMapKicker) els.gardenMapKicker.textContent = 'Garden rewards road';
+      if (els.badgeSummary) els.badgeSummary.textContent = nextLevel ? `Garden Map unlocked — reach Level ${nextLevel} for the next garden reward.` : 'Full garden complete — you are a Garden Master!';
       if (els.gardenMapBadge) els.gardenMapBadge.textContent = nextLevel ? `Next L${nextLevel}` : '👑 Done';
     } else {
       if (els.gardenMapKicker) els.gardenMapKicker.textContent = 'Unlocks at Level 5';
-      if (els.gardenMapTitle) els.gardenMapTitle.textContent = 'Garden Map';
-      if (els.gardenMapSummary) els.gardenMapSummary.textContent = 'Clear Level 5 to open your first garden area.';
+      if (els.badgeSummary) els.badgeSummary.textContent = 'Clear Level 5 to unlock your Garden Map and first badge.';
       if (els.gardenMapBadge) els.gardenMapBadge.textContent = '🔒 L5';
     }
   }

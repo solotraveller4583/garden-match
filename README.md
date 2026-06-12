@@ -26,7 +26,7 @@ http://localhost:8080
 - Genre: match-3 puzzle
 - Audience: everyone, all ages
 - Theme: cheerful garden tiles drawn with original CSS artwork
-- Landing: game-style hero, garden preview, visible settings, Level 5 Garden Map unlock, and badge-road motivation
+- Landing: compact game-style hero, visible settings, combined Rewards Road/Garden Map unlock at Level 5, and badge motivation
 - Sharing: one simple Share button using the device/browser share sheet
 - Accessibility: no timer, large tap targets, simple language, gentle sounds, hint button
 - Mobile: responsive portrait layout, PWA manifest, offline service worker
