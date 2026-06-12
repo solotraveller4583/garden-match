@@ -49,6 +49,7 @@
     target: 13,
     collected: 0,
     level: 1,
+    mapContinueTarget: 6,
     busy: false,
     sound: true
   };
@@ -57,6 +58,12 @@
     home: document.querySelector('#home-screen'),
     game: document.querySelector('#game-screen'),
     mapScreen: document.querySelector('#map-screen'),
+    mapKicker: document.querySelector('#map-kicker'),
+    mapTitle: document.querySelector('#map-title'),
+    mapIntro: document.querySelector('#map-intro'),
+    mapSign: document.querySelector('#map-sign'),
+    mapNote: document.querySelector('#map-note'),
+    mapProgressRow: document.querySelector('#map-progress-row'),
     board: document.querySelector('#board'),
     size: document.querySelector('#size-select'),
     difficulty: document.querySelector('#difficulty-select'),
@@ -277,7 +284,29 @@
     return badge;
   }
 
-  function showLevel5GardenMap() {
+  function showGardenMap(completedLevel) {
+    const nextLevel = completedLevel + 1;
+    state.mapContinueTarget = nextLevel;
+    const plotCount = Math.min(5, Math.max(1, Math.floor(completedLevel / 5)));
+
+    if (els.mapKicker) els.mapKicker.textContent = `Level ${completedLevel} garden reward`;
+    if (els.mapTitle) els.mapTitle.textContent = completedLevel === 5 ? 'Your Garden Starts Growing!' : 'Your Garden Grew Again!';
+    if (els.mapIntro) els.mapIntro.textContent = `You cleared Level ${completedLevel}. A new part of your garden is blooming.`;
+    if (els.mapSign) els.mapSign.textContent = `L${completedLevel}`;
+    if (els.mapNote) els.mapNote.textContent = completedLevel >= 25 ? 'Your garden is becoming a magical bloom park.' : 'Keep playing to unlock more flowers, butterflies, and garden surprises.';
+    if (els.mapContinue) els.mapContinue.textContent = `Continue to Level ${nextLevel}`;
+
+    els.mapScreen?.style.setProperty('--plot-count', plotCount);
+    els.mapScreen?.querySelectorAll('.garden-plot').forEach((plot, index) => {
+      const unlocked = index < plotCount;
+      plot.classList.toggle('locked-plot', !unlocked);
+      plot.innerHTML = unlocked ? '<span></span>' : '?';
+    });
+    els.mapProgressRow?.querySelectorAll('[data-map-level]').forEach(node => {
+      const level = Number(node.dataset.mapLevel);
+      node.classList.toggle('done', level <= completedLevel);
+    });
+
     els.game.classList.add('hidden');
     els.home.classList.add('hidden');
     els.mapScreen?.classList.remove('hidden');
@@ -558,8 +587,8 @@
       const completedLevel = state.level;
       const unlockedMilestone = unlockMilestoneIfNeeded(completedLevel);
       if (unlockedMilestone) {
-        if (completedLevel === 5) {
-          showLevel5GardenMap();
+        if (completedLevel % 5 === 0) {
+          showGardenMap(completedLevel);
           return;
         }
         showDialog(
@@ -576,8 +605,8 @@
         );
         return;
       }
-      if (completedLevel === 5) {
-        showLevel5GardenMap();
+      if (completedLevel % 5 === 0) {
+        showGardenMap(completedLevel);
         return;
       }
       const encouragement = LEVEL_COMPLETE_MESSAGES[(completedLevel - 1) % LEVEL_COMPLETE_MESSAGES.length];
@@ -660,7 +689,7 @@
   els.share.addEventListener('click', shareGame);
   if (els.mapContinue) {
     els.mapContinue.addEventListener('click', () => {
-      state.level = 6;
+      state.level = state.mapContinueTarget || (state.level + 1);
       els.mapScreen.classList.add('hidden');
       startGame();
     });
@@ -673,6 +702,10 @@
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  }
+
+  if (location.hostname === '127.0.0.1' || location.hostname === 'localhost') {
+    window.__gardenMatchDebug = { showGardenMap, state };
   }
 
   updateContinueButton();

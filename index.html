@@ -72,13 +72,21 @@
       <section class="badge-panel rewards-road" aria-label="Garden rewards road">
         <div class="badge-heading">
           <div>
-            <p class="eyebrow" id="garden-map-kicker">Next reward</p>
-            <p id="badge-summary" class="badge-summary">Level 5 unlocks your Garden Map.</p>
+            <p class="eyebrow" id="garden-map-kicker">Garden map</p>
+            <p id="badge-summary" class="badge-summary">Clear Level 5 to grow your first garden plot.</p>
           </div>
           <span class="badge-count" id="garden-map-badge">L5</span>
         </div>
+        <div class="landing-map-preview" id="garden-map" aria-label="Garden map preview">
+          <span class="preview-sun"></span>
+          <span class="preview-hill"></span>
+          <span class="preview-path"></span>
+          <span class="preview-plot preview-plot-1"></span>
+          <span class="preview-plot preview-plot-2 locked"></span>
+          <span class="preview-plot preview-plot-3 locked"></span>
+          <span class="preview-flag">L5</span>
+        </div>
         <div id="badge-list" class="badge-list compact-badges" aria-label="Badge progress"></div>
-        <div id="garden-map" class="mini-map hidden" aria-hidden="true"></div>
       </section>
 
       <nav class="footer-links" aria-label="Legal and privacy links">
@@ -120,9 +128,9 @@
     </section>
 
     <section class="card garden-map-screen hidden" id="map-screen" aria-label="Garden growth map">
-      <p class="eyebrow">Level 5 reward unlocked</p>
-      <h2>Your Garden Is Growing!</h2>
-      <p class="map-intro">You cleared Level 5. Your tiny garden has started to bloom.</p>
+      <p class="eyebrow" id="map-kicker">Level 5 reward unlocked</p>
+      <h2 id="map-title">Your Garden Is Growing!</h2>
+      <p class="map-intro" id="map-intro">You cleared Level 5. Your tiny garden has started to bloom.</p>
 
       <div class="growth-scene" aria-label="Garden progress after Level 5">
         <div class="sun"></div>
@@ -134,18 +142,21 @@
         <div class="garden-plot plot-1"><span></span></div>
         <div class="garden-plot plot-2"><span></span></div>
         <div class="garden-plot plot-3 locked-plot">?</div>
-        <div class="map-sign">L5</div>
+        <div class="garden-plot plot-4 locked-plot">?</div>
+        <div class="garden-plot plot-5 locked-plot">?</div>
+        <div class="map-sign" id="map-sign">L5</div>
       </div>
 
-      <div class="map-progress-row" aria-label="Garden milestones">
-        <span class="done">L5 🌱</span>
-        <span>L10 🌷</span>
-        <span>L20 🦋</span>
-        <span>L50 👑</span>
+      <div class="map-progress-row" id="map-progress-row" aria-label="Garden milestones">
+        <span data-map-level="5">L5 🌱</span>
+        <span data-map-level="10">L10 🌷</span>
+        <span data-map-level="15">L15 🌼</span>
+        <span data-map-level="20">L20 🦋</span>
+        <span data-map-level="25">L25 🌻</span>
       </div>
 
-      <p class="map-note">Keep playing to unlock more flowers, butterflies, and garden surprises.</p>
-      <button class="primary" id="map-continue-button">Continue to Level 6</button>
+      <p class="map-note" id="map-note">Keep playing to unlock more flowers, butterflies, and garden surprises.</p>
+      <button class="primary" id="map-continue-button" type="button">Continue to Level 6</button>
     </section>
 
     <dialog id="message-dialog">
