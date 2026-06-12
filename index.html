@@ -44,11 +44,14 @@
         <button class="primary" id="start-button">Play Now</button>
         <button class="ghost hidden" id="continue-button">Continue</button>
         <button class="ghost" id="how-button">How to play</button>
-        <button class="ghost" id="share-button">Share / LINE</button>
+        <button class="ghost" id="share-button">Share</button>
       </div>
 
-      <details class="settings-card">
-        <summary>Game settings</summary>
+      <section class="settings-card" aria-label="Game settings">
+        <div class="settings-title">
+          <span>Game settings</span>
+          <small>Choose before playing</small>
+        </div>
         <div class="settings-grid" aria-label="Game settings">
           <label>
             Board size
@@ -67,7 +70,7 @@
             </select>
           </label>
         </div>
-      </details>
+      </section>
 
       <section class="badge-panel" aria-label="Unlocked milestone badges">
         <div class="badge-heading">

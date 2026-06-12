@@ -26,7 +26,7 @@ http://localhost:8080
 - Genre: match-3 puzzle
 - Audience: everyone, all ages
 - Theme: cheerful garden tiles drawn with original CSS artwork
-- Sharing: one simple Share / LINE button using the device/browser share sheet
+- Sharing: one simple Share button using the device/browser share sheet
 - Accessibility: no timer, large tap targets, simple language, gentle sounds, hint button
 - Mobile: responsive portrait layout, PWA manifest, offline service worker
 - Progress: browser-based save/continue feature
@@ -46,7 +46,7 @@ This project is intentionally simple and low-risk:
 - No third-party scripts
 - No advertising or analytics in this version
 - Original CSS-drawn playable tile artwork; no downloaded icon packs or copied game art
-- The Share / LINE button uses built-in browser/device sharing when available; no social app account data is received by the game
+- The Share button uses built-in browser/device sharing when available; no social app account data is received by the game
 - Content Security Policy meta tags on HTML pages
 - Referrer Policy and Permissions Policy meta tags
 - Privacy Policy page
