@@ -128,35 +128,41 @@
     </section>
 
     <section class="card garden-map-screen hidden" id="map-screen" aria-label="Garden growth map">
-      <p class="eyebrow" id="map-kicker">Level 5 reward unlocked</p>
-      <h2 id="map-title">Your Garden Is Growing!</h2>
-      <p class="map-intro" id="map-intro">You cleared Level 5. Your tiny garden has started to bloom.</p>
+      <p class="eyebrow" id="map-kicker">Garden reward</p>
+      <h2 id="map-title">Your Flowers Bloomed!</h2>
+      <p class="map-intro" id="map-intro">The pink flowers you collected are now growing in your garden.</p>
 
-      <div class="growth-scene" aria-label="Garden progress after Level 5">
+      <div class="growth-scene" aria-label="Garden grown from collected flowers">
         <div class="sun"></div>
         <div class="cloud cloud-a"></div>
         <div class="cloud cloud-b"></div>
+        <div class="butterfly butterfly-a"><span></span></div>
+        <div class="butterfly butterfly-b"><span></span></div>
+        <div class="bee bee-a"><span></span></div>
+        <div class="bee bee-b"><span></span></div>
         <div class="hill hill-back"></div>
         <div class="hill hill-front"></div>
         <div class="garden-path"></div>
+        <div class="flower-meadow meadow-a"></div>
+        <div class="flower-meadow meadow-b"></div>
         <div class="garden-plot plot-1"><span></span></div>
         <div class="garden-plot plot-2"><span></span></div>
         <div class="garden-plot plot-3 locked-plot">?</div>
         <div class="garden-plot plot-4 locked-plot">?</div>
         <div class="garden-plot plot-5 locked-plot">?</div>
-        <div class="map-sign" id="map-sign">L5</div>
+        <div class="flower-count-bubble" id="map-flower-count">🌸 +11</div>
       </div>
 
-      <div class="map-progress-row" id="map-progress-row" aria-label="Garden milestones">
-        <span data-map-level="5">L5 🌱</span>
-        <span data-map-level="10">L10 🌷</span>
-        <span data-map-level="15">L15 🌼</span>
-        <span data-map-level="20">L20 🦋</span>
-        <span data-map-level="25">L25 🌻</span>
+      <div class="map-progress-row" id="map-progress-row" aria-label="Garden growth milestones">
+        <span data-map-level="5">🌱</span>
+        <span data-map-level="10">🌷</span>
+        <span data-map-level="15">🐝</span>
+        <span data-map-level="20">🦋</span>
+        <span data-map-level="25">🌻</span>
       </div>
 
-      <p class="map-note" id="map-note">Keep playing to unlock more flowers, butterflies, and garden surprises.</p>
-      <button class="primary" id="map-continue-button" type="button">Continue to Level 6</button>
+      <p class="map-note" id="map-note">More flowers will attract bees, butterflies, and garden surprises.</p>
+      <button class="primary" id="map-continue-button" type="button">Continue</button>
     </section>
 
     <dialog id="message-dialog">

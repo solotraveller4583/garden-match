@@ -875,6 +875,159 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
   .reward-progress { display: none; }
 }
 
+/* Garden reward v2: flower-collected garden, bees, butterflies, no level-label focus */
+.garden-map-screen {
+  text-align: center;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 238, 128, 0.42), transparent 24%),
+    radial-gradient(circle at 86% 15%, rgba(255, 148, 225, 0.23), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(247,255,248,0.9));
+}
+.garden-map-screen .eyebrow {
+  color: #7ab17d;
+  letter-spacing: 0.12em;
+}
+.map-intro {
+  max-width: 310px;
+  justify-self: center;
+}
+.growth-scene {
+  background:
+    radial-gradient(circle at 72% 17%, rgba(255,255,255,0.55) 0 8%, transparent 9%),
+    linear-gradient(180deg, #c9f5ff 0 46%, #aef2bd 47% 100%);
+}
+.flower-count-bubble {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  z-index: 7;
+  display: inline-grid;
+  place-items: center;
+  min-width: 64px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  color: #c02595;
+  font-weight: 950;
+  box-shadow: 0 8px 18px rgba(166, 70, 140, 0.16), inset 0 0 0 2px rgba(255,255,255,0.8);
+}
+.flower-meadow {
+  position: absolute;
+  z-index: 5;
+  width: 116px;
+  height: 52px;
+  background:
+    radial-gradient(circle at 16% 76%, #ff5cda 0 8%, transparent 9%),
+    radial-gradient(circle at 32% 50%, #ffd85a 0 7%, transparent 8%),
+    radial-gradient(circle at 48% 72%, #ff5cda 0 8%, transparent 9%),
+    radial-gradient(circle at 66% 45%, #ffffff 0 7%, transparent 8%),
+    radial-gradient(circle at 82% 70%, #ff5cda 0 8%, transparent 9%),
+    linear-gradient(90deg, transparent 0 13%, #229c55 14% 16%, transparent 17% 29%, #229c55 30% 32%, transparent 33% 45%, #229c55 46% 48%, transparent 49% 62%, #229c55 63% 65%, transparent 66% 79%, #229c55 80% 82%, transparent 83%);
+  filter: drop-shadow(0 4px 4px rgba(48, 115, 65, 0.14));
+}
+.meadow-a { left: 16px; bottom: 18px; }
+.meadow-b { right: 14px; bottom: 20px; transform: scale(0.92); }
+.butterfly,
+.bee {
+  position: absolute;
+  z-index: 8;
+  animation: flutter 2.8s ease-in-out infinite;
+}
+.butterfly span,
+.butterfly::before,
+.butterfly::after,
+.bee span,
+.bee::before,
+.bee::after {
+  content: '';
+  position: absolute;
+  display: block;
+}
+.butterfly { width: 34px; height: 28px; }
+.butterfly span {
+  left: 15px;
+  top: 8px;
+  width: 5px;
+  height: 14px;
+  border-radius: 8px;
+  background: #5a3d94;
+}
+.butterfly::before,
+.butterfly::after {
+  top: 3px;
+  width: 17px;
+  height: 19px;
+  border-radius: 70% 30% 70% 30%;
+  background: linear-gradient(135deg, #a981ff, #ff72d2);
+}
+.butterfly::before { left: 0; transform: rotate(-18deg); }
+.butterfly::after { right: 0; transform: rotate(18deg) scaleX(-1); }
+.butterfly-a { left: 74px; top: 78px; }
+.butterfly-b { right: 58px; top: 118px; transform: scale(0.82); animation-delay: -1.4s; }
+.bee { width: 30px; height: 22px; }
+.bee span {
+  left: 5px;
+  top: 7px;
+  width: 21px;
+  height: 12px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(90deg, #ffd84c 0 6px, #3a2c29 6px 9px);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+.bee::before,
+.bee::after {
+  top: 1px;
+  width: 12px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.78);
+}
+.bee::before { left: 6px; transform: rotate(-18deg); }
+.bee::after { right: 6px; transform: rotate(18deg); }
+.bee-a { left: 134px; top: 48px; animation-delay: -0.6s; }
+.bee-b { right: 110px; top: 54px; transform: scale(0.82); animation-delay: -1.8s; }
+.garden-plot {
+  z-index: 6;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #9b6740, #6f442d);
+}
+.garden-plot span {
+  background:
+    radial-gradient(circle at 15% 64%, #ff58d9 0 10%, transparent 11%),
+    radial-gradient(circle at 34% 42%, #ff58d9 0 12%, transparent 13%),
+    radial-gradient(circle at 54% 66%, #ffd85a 0 10%, transparent 11%),
+    radial-gradient(circle at 74% 44%, #ff58d9 0 12%, transparent 13%),
+    radial-gradient(circle at 88% 69%, #fff 0 9%, transparent 10%),
+    linear-gradient(90deg, transparent 0 13%, #229c55 14% 17%, transparent 18% 31%, #229c55 32% 35%, transparent 36% 49%, #229c55 50% 53%, transparent 54% 68%, #229c55 69% 72%, transparent 73% 85%, #229c55 86% 89%, transparent 90%);
+}
+.locked-plot {
+  color: transparent;
+  background: linear-gradient(180deg, rgba(118,94,72,0.45), rgba(92,74,61,0.45));
+}
+.locked-plot::after {
+  content: '';
+  width: 34px;
+  height: 24px;
+  border-radius: 50% 50% 40% 40%;
+  background: rgba(255,255,255,0.28);
+}
+.map-sign { display: none; }
+.map-progress-row span {
+  font-size: 1rem;
+  background: rgba(255,255,255,0.55);
+}
+.map-progress-row .done {
+  transform: translateY(-2px) scale(1.05);
+  background: linear-gradient(135deg, #fff4a8, #bbf8c8);
+}
+
+@media (max-height: 720px) {
+  .flower-count-bubble { min-height: 30px; font-size: 0.82rem; }
+  .butterfly-a { left: 64px; top: 70px; }
+  .bee-a { left: 122px; top: 42px; }
+}
+
 /* Level-5 garden map + cuter pieces + compact controls */
 .garden-map-screen {
   display: grid;
@@ -1225,4 +1378,88 @@ body { overflow: hidden; }
 
 @media (min-width: 431px) {
   :root { --tile-size: min(44px, calc((430px - 58px) / var(--board-size, 7)), calc((100dvh - 222px) / var(--board-size, 7))); }
+}
+
+/* Final garden reward override: graphic-first, no level-label focus */
+.garden-map-screen {
+  text-align: center;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 238, 128, 0.42), transparent 24%),
+    radial-gradient(circle at 86% 15%, rgba(255, 148, 225, 0.23), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(247,255,248,0.9));
+}
+.garden-map-screen .eyebrow { color: #7ab17d; letter-spacing: 0.12em; }
+.map-intro { max-width: 310px; justify-self: center; }
+.growth-scene {
+  background:
+    radial-gradient(circle at 72% 17%, rgba(255,255,255,0.55) 0 8%, transparent 9%),
+    linear-gradient(180deg, #c9f5ff 0 46%, #aef2bd 47% 100%);
+}
+.flower-count-bubble {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  z-index: 7;
+  display: inline-grid;
+  place-items: center;
+  min-width: 64px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  color: #c02595;
+  font-weight: 950;
+  box-shadow: 0 8px 18px rgba(166,70,140,0.16), inset 0 0 0 2px rgba(255,255,255,0.8);
+}
+.flower-meadow {
+  position: absolute;
+  z-index: 5;
+  width: 116px;
+  height: 52px;
+  background:
+    radial-gradient(circle at 16% 76%, #ff5cda 0 8%, transparent 9%),
+    radial-gradient(circle at 32% 50%, #ffd85a 0 7%, transparent 8%),
+    radial-gradient(circle at 48% 72%, #ff5cda 0 8%, transparent 9%),
+    radial-gradient(circle at 66% 45%, #ffffff 0 7%, transparent 8%),
+    radial-gradient(circle at 82% 70%, #ff5cda 0 8%, transparent 9%),
+    linear-gradient(90deg, transparent 0 13%, #229c55 14% 16%, transparent 17% 29%, #229c55 30% 32%, transparent 33% 45%, #229c55 46% 48%, transparent 49% 62%, #229c55 63% 65%, transparent 66% 79%, #229c55 80% 82%, transparent 83%);
+  filter: drop-shadow(0 4px 4px rgba(48,115,65,0.14));
+}
+.meadow-a { left: 16px; bottom: 18px; }
+.meadow-b { right: 14px; bottom: 20px; transform: scale(0.92); }
+.butterfly, .bee { position: absolute; z-index: 8; animation: flutter 2.8s ease-in-out infinite; }
+.butterfly span, .butterfly::before, .butterfly::after, .bee span, .bee::before, .bee::after { content: ''; position: absolute; display: block; }
+.butterfly { width: 34px; height: 28px; }
+.butterfly span { left: 15px; top: 8px; width: 5px; height: 14px; border-radius: 8px; background: #5a3d94; }
+.butterfly::before, .butterfly::after { top: 3px; width: 17px; height: 19px; border-radius: 70% 30% 70% 30%; background: linear-gradient(135deg, #a981ff, #ff72d2); }
+.butterfly::before { left: 0; transform: rotate(-18deg); }
+.butterfly::after { right: 0; transform: rotate(18deg) scaleX(-1); }
+.butterfly-a { left: 74px; top: 78px; }
+.butterfly-b { right: 58px; top: 118px; transform: scale(0.82); animation-delay: -1.4s; }
+.bee { width: 30px; height: 22px; }
+.bee span { left: 5px; top: 7px; width: 21px; height: 12px; border-radius: 999px; background: repeating-linear-gradient(90deg, #ffd84c 0 6px, #3a2c29 6px 9px); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); }
+.bee::before, .bee::after { top: 1px; width: 12px; height: 11px; border-radius: 50%; background: rgba(255,255,255,0.78); }
+.bee::before { left: 6px; transform: rotate(-18deg); }
+.bee::after { right: 6px; transform: rotate(18deg); }
+.bee-a { left: 134px; top: 48px; animation-delay: -0.6s; }
+.bee-b { right: 110px; top: 54px; transform: scale(0.82); animation-delay: -1.8s; }
+.garden-plot { z-index: 6; border-radius: 24px; background: linear-gradient(180deg, #9b6740, #6f442d); }
+.garden-plot span {
+  background:
+    radial-gradient(circle at 15% 64%, #ff58d9 0 10%, transparent 11%),
+    radial-gradient(circle at 34% 42%, #ff58d9 0 12%, transparent 13%),
+    radial-gradient(circle at 54% 66%, #ffd85a 0 10%, transparent 11%),
+    radial-gradient(circle at 74% 44%, #ff58d9 0 12%, transparent 13%),
+    radial-gradient(circle at 88% 69%, #fff 0 9%, transparent 10%),
+    linear-gradient(90deg, transparent 0 13%, #229c55 14% 17%, transparent 18% 31%, #229c55 32% 35%, transparent 36% 49%, #229c55 50% 53%, transparent 54% 68%, #229c55 69% 72%, transparent 73% 85%, #229c55 86% 89%, transparent 90%);
+}
+.locked-plot { color: transparent; background: linear-gradient(180deg, rgba(118,94,72,0.45), rgba(92,74,61,0.45)); }
+.locked-plot::after { content: ''; width: 34px; height: 24px; border-radius: 50% 50% 40% 40%; background: rgba(255,255,255,0.28); }
+.map-sign { display: none; }
+.map-progress-row span { font-size: 1rem; background: rgba(255,255,255,0.55); }
+.map-progress-row .done { transform: translateY(-2px) scale(1.05); background: linear-gradient(135deg, #fff4a8, #bbf8c8); }
+@media (max-height: 720px) {
+  .flower-count-bubble { min-height: 30px; font-size: 0.82rem; }
+  .butterfly-a { left: 64px; top: 70px; }
+  .bee-a { left: 122px; top: 42px; }
 }

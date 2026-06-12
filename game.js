@@ -62,6 +62,7 @@
     mapTitle: document.querySelector('#map-title'),
     mapIntro: document.querySelector('#map-intro'),
     mapSign: document.querySelector('#map-sign'),
+    mapFlowerCount: document.querySelector('#map-flower-count'),
     mapNote: document.querySelector('#map-note'),
     mapProgressRow: document.querySelector('#map-progress-row'),
     board: document.querySelector('#board'),
@@ -289,11 +290,12 @@
     state.mapContinueTarget = nextLevel;
     const plotCount = Math.min(5, Math.max(1, Math.floor(completedLevel / 5)));
 
-    if (els.mapKicker) els.mapKicker.textContent = `Level ${completedLevel} garden reward`;
-    if (els.mapTitle) els.mapTitle.textContent = completedLevel === 5 ? 'Your Garden Starts Growing!' : 'Your Garden Grew Again!';
-    if (els.mapIntro) els.mapIntro.textContent = `You cleared Level ${completedLevel}. A new part of your garden is blooming.`;
-    if (els.mapSign) els.mapSign.textContent = `L${completedLevel}`;
-    if (els.mapNote) els.mapNote.textContent = completedLevel >= 25 ? 'Your garden is becoming a magical bloom park.' : 'Keep playing to unlock more flowers, butterflies, and garden surprises.';
+    if (els.mapKicker) els.mapKicker.textContent = 'Garden reward';
+    if (els.mapTitle) els.mapTitle.textContent = completedLevel === 5 ? 'Your Flowers Bloomed!' : 'Your Garden Bloomed More!';
+    if (els.mapIntro) els.mapIntro.textContent = `You collected ${state.target} pink flowers. They are now growing in your garden.`;
+    if (els.mapSign) els.mapSign.textContent = '';
+    if (els.mapFlowerCount) els.mapFlowerCount.textContent = `🌸 +${state.target}`;
+    if (els.mapNote) els.mapNote.textContent = plotCount >= 4 ? 'Butterflies and bees love your blooming garden.' : 'Collect more flowers to attract bees, butterflies, and surprises.';
     if (els.mapContinue) els.mapContinue.textContent = `Continue to Level ${nextLevel}`;
 
     els.mapScreen?.style.setProperty('--plot-count', plotCount);
