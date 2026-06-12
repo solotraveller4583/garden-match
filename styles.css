@@ -598,8 +598,13 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 }
 .tile-flower,
 .tile-demo.tile-flower {
-  background: linear-gradient(180deg, #fff1ff, #fff9ef 58%, #eaffe9);
-  box-shadow: 0 7px 0 rgba(124, 73, 145, 0.12), inset 0 0 0 2px rgba(229, 134, 255, 0.30);
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255,255,255,0.92) 0 36%, transparent 37%),
+    linear-gradient(180deg, #ffd9fb 0%, #fff3ff 54%, #eaffe9 100%);
+  box-shadow:
+    0 7px 0 rgba(180, 62, 151, 0.18),
+    inset 0 0 0 3px rgba(255, 69, 205, 0.56),
+    inset 0 0 18px rgba(255, 78, 207, 0.18);
 }
 .tile-flower::before {
   width: 84%;
@@ -790,4 +795,82 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 
 @media (min-width: 500px) and (min-height: 780px) {
   :root { --tile-size: 50px; }
+}
+
+/* Product polish pass: one-screen mobile landing + no-scroll gameplay controls */
+.app-shell { width: min(100%, 500px); padding: max(8px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)); }
+.hero { gap: 8px; }
+.hero.card { padding: 12px; border-radius: 24px; }
+.hero-top { grid-template-columns: 76px 1fr; gap: 11px; padding: 0; }
+.logo { width: 76px; height: 76px; border-radius: 24px; }
+.logo-flower { width: 58px; height: 58px; }
+.logo-burst {
+  position: absolute;
+  inset: 7px;
+  border-radius: 22px;
+  background: conic-gradient(from 14deg, transparent 0 10deg, rgba(255,255,255,0.9) 10deg 18deg, transparent 18deg 42deg);
+  opacity: 0.55;
+  animation: sparkle 2.7s ease-in-out infinite;
+}
+.hero h1 { font-size: clamp(2.2rem, 10.6vw, 3.25rem); letter-spacing: -0.075em; }
+.hero .intro { margin-top: 4px; font-size: 0.88rem; line-height: 1.25; }
+.settings-card { padding: 9px; border-radius: 18px; }
+.settings-grid { gap: 8px; }
+label { gap: 4px; font-size: 0.67rem; }
+select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
+.goal-card { grid-template-columns: 46px 1fr; gap: 10px; padding: 8px 9px; border-radius: 17px; }
+.goal-card strong { font-size: 0.94rem; }
+.goal-card span { font-size: 0.78rem; line-height: 1.22; }
+.tile-demo { width: 44px; height: 44px; border-radius: 14px; }
+.home-actions { gap: 7px; }
+.home-actions .primary { min-height: 48px; font-size: 1rem; }
+.home-actions button { min-height: 39px; font-size: 0.86rem; border-radius: 14px; }
+.rewards-road { padding: 8px 10px; border-radius: 17px; }
+.badge-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.badge-summary { font-size: 0.76rem; line-height: 1.18; }
+.badge-count { min-width: 40px; min-height: 28px; font-size: 0.72rem; }
+.compact-badges { display: none; }
+.footer-links { font-size: 0.72rem; gap: 3px 8px; }
+
+.game.card { padding: 8px; border-radius: 22px; min-height: calc(100dvh - 18px); grid-template-rows: auto auto auto 1fr auto; gap: 7px; }
+.game-header { grid-template-columns: 38px 1fr 38px; gap: 7px; }
+.game-header h2 { font-size: clamp(1.18rem, 5.4vw, 1.55rem); line-height: 1.02; }
+.icon-button { width: 38px; min-height: 38px; border-radius: 14px; }
+.stats { gap: 5px; }
+.stats > div { padding: 6px 3px; border-radius: 13px; }
+.stats span { font-size: 0.95rem; }
+.stats small { font-size: 0.66rem; }
+.reward-progress { padding: 5px 7px; font-size: 0.76rem; line-height: 1.12; }
+.board-wrap { padding: 4px; border-radius: 16px; align-self: center; }
+.board { gap: 4px; }
+.actions { gap: 6px; }
+.actions button { min-height: 38px; font-size: 0.82rem; border-radius: 13px; }
+
+@media (max-width: 520px) {
+  :root { --tile-size: min(38px, calc((100vw - 58px) / var(--board-size, 7))); }
+  .app-shell { padding-inline: 8px; }
+  .hero-top { grid-template-columns: 70px 1fr; }
+  .logo { width: 70px; height: 70px; }
+  .logo-flower { width: 54px; height: 54px; }
+  .hero h1 { font-size: clamp(2rem, 10.8vw, 3rem); }
+  .settings-grid { grid-template-columns: 1fr 1fr; }
+  .badge-panel { padding: 8px 10px; }
+}
+
+@media (max-height: 720px) {
+  :root { --tile-size: min(35px, calc((100vw - 60px) / var(--board-size, 7))); }
+  .hero { gap: 7px; }
+  .hero.card { padding: 10px; }
+  .hero-top { grid-template-columns: 62px 1fr; gap: 9px; }
+  .logo { width: 62px; height: 62px; border-radius: 20px; }
+  .logo-flower { width: 48px; height: 48px; }
+  .hero h1 { font-size: clamp(1.8rem, 9.8vw, 2.55rem); }
+  .hero .intro { font-size: 0.8rem; }
+  .goal-card { padding: 7px 8px; }
+  .home-actions .primary { min-height: 44px; }
+  .home-actions button { min-height: 36px; }
+  .rewards-road { padding: 7px 9px; }
+  .footer-links { font-size: 0.68rem; }
+  .game.card { min-height: calc(100dvh - 14px); gap: 5px; }
+  .reward-progress { display: none; }
 }

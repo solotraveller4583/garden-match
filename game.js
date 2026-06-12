@@ -200,9 +200,9 @@
       if (els.badgeSummary) els.badgeSummary.textContent = nextLevel ? `Garden Map unlocked — reach Level ${nextLevel} for the next garden reward.` : 'Full garden complete — you are a Garden Master!';
       if (els.gardenMapBadge) els.gardenMapBadge.textContent = nextLevel ? `Next L${nextLevel}` : '👑 Done';
     } else {
-      if (els.gardenMapKicker) els.gardenMapKicker.textContent = 'Unlocks at Level 5';
-      if (els.badgeSummary) els.badgeSummary.textContent = 'Clear Level 5 to unlock your Garden Map and first badge.';
-      if (els.gardenMapBadge) els.gardenMapBadge.textContent = '🔒 L5';
+      if (els.gardenMapKicker) els.gardenMapKicker.textContent = 'Next reward';
+      if (els.badgeSummary) els.badgeSummary.textContent = 'Level 5 unlocks your Garden Map.';
+      if (els.gardenMapBadge) els.gardenMapBadge.textContent = 'L5';
     }
   }
 
@@ -227,7 +227,7 @@
       const latest = MILESTONE_BADGES.filter(badge => unlocked.includes(badge.level)).at(-1);
       els.badgeSummary.textContent = `${unlocked.length}/${MILESTONE_BADGES.length} unlocked. Latest: ${latest.emoji} ${latest.name}.`;
     } else {
-      els.badgeSummary.textContent = 'Reach Level 5 to unlock Seedling Gardener.';
+      els.badgeSummary.textContent = 'Level 5 unlocks your Garden Map.';
     }
     renderGardenMap();
   }

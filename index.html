@@ -21,42 +21,16 @@
 <body>
   <main class="app-shell" aria-live="polite">
     <section class="card hero" id="home-screen">
-      <div class="petal petal-a" aria-hidden="true"></div>
-      <div class="petal petal-b" aria-hidden="true"></div>
-      <div class="petal petal-c" aria-hidden="true"></div>
-
       <div class="hero-top">
         <div class="logo" aria-hidden="true">
           <span class="logo-flower"></span>
+          <span class="logo-burst"></span>
         </div>
         <div>
-          <p class="eyebrow">Relaxing match-3 adventure</p>
+          <p class="eyebrow">Relaxing match-3 puzzle</p>
           <h1>Garden Match</h1>
-          <p class="tagline">Grow Your Dream Garden!</p>
-          <p class="intro">Match flowers, collect badges, and unlock a cozy garden one level at a time.</p>
+          <p class="intro">Match the bright pink flower, earn badges, and grow your garden.</p>
         </div>
-      </div>
-
-      <div class="feature-chips" aria-label="Game highlights">
-        <span>⭐ 50 Levels</span>
-        <span>🏆 10 Badges</span>
-        <span>🌿 No Timer</span>
-      </div>
-
-      <div class="goal-card" aria-label="Game goal">
-        <div class="goal-icon tile-demo tile-flower" aria-hidden="true"></div>
-        <div>
-          <p class="eyebrow">Today's goal</p>
-          <strong>Pink Flower</strong>
-          <span>Match 3+ pink flowers before your moves run out.</span>
-        </div>
-      </div>
-
-      <div class="home-actions" aria-label="Game actions">
-        <button class="primary" id="start-button">🌸 Start Growing</button>
-        <button class="ghost hidden" id="continue-button">🌿 Continue</button>
-        <button class="ghost" id="how-button">📖 How to play</button>
-        <button class="ghost" id="share-button">🎁 Share</button>
       </div>
 
       <section class="settings-card" aria-label="Game settings">
@@ -80,23 +54,31 @@
         </div>
       </section>
 
+      <div class="goal-card" aria-label="Game goal">
+        <div class="goal-icon tile-demo tile-flower" aria-hidden="true"></div>
+        <div>
+          <strong>Collect Pink Flowers</strong>
+          <span>Match 3+ of this flower tile to clear each level.</span>
+        </div>
+      </div>
+
+      <div class="home-actions" aria-label="Game actions">
+        <button class="primary" id="start-button">Play Now</button>
+        <button class="ghost hidden" id="continue-button">Continue</button>
+        <button class="ghost" id="how-button">How to play</button>
+        <button class="ghost" id="share-button">Share</button>
+      </div>
+
       <section class="badge-panel rewards-road" aria-label="Garden rewards road">
         <div class="badge-heading">
           <div>
-            <p class="eyebrow" id="garden-map-kicker">Unlocks at Level 5</p>
-            <p id="badge-summary" class="badge-summary">Clear Level 5 to unlock your Garden Map and first badge.</p>
+            <p class="eyebrow" id="garden-map-kicker">Next reward</p>
+            <p id="badge-summary" class="badge-summary">Level 5 unlocks your Garden Map.</p>
           </div>
-          <span class="badge-count" id="garden-map-badge">🔒 L5</span>
+          <span class="badge-count" id="garden-map-badge">L5</span>
         </div>
-        <div class="mini-map" id="garden-map" aria-label="Garden map progress">
-          <div class="mini-path"></div>
-          <div class="mini-node node-l5 locked"><span>🌱</span><small>L5</small></div>
-          <div class="mini-node node-l10 locked"><span>🌷</span><small>L10</small></div>
-          <div class="mini-node node-l20 locked"><span>🦋</span><small>L20</small></div>
-          <div class="mini-node node-l35 locked"><span>🐝</span><small>L35</small></div>
-          <div class="mini-node node-l50 locked"><span>👑</span><small>L50</small></div>
-        </div>
-        <div id="badge-list" class="badge-list compact-badges"></div>
+        <div id="badge-list" class="badge-list compact-badges" aria-label="Badge progress"></div>
+        <div id="garden-map" class="mini-map hidden" aria-hidden="true"></div>
       </section>
 
       <nav class="footer-links" aria-label="Legal and privacy links">
