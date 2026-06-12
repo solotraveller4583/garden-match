@@ -1,40 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Garden Match icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Garden Match logo">
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#fff5fb"/>
-      <stop offset="1" stop-color="#ffd9ef"/>
+      <stop offset="0" stop-color="#e6f7a8"/>
+      <stop offset="1" stop-color="#d6f0c0"/>
     </linearGradient>
-    <linearGradient id="card" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#fff8fd"/>
-    </linearGradient>
-    <linearGradient id="stem" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#1fb85d"/>
-      <stop offset="1" stop-color="#128a44"/>
-    </linearGradient>
-    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#9b3f77" flood-opacity=".18"/>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#91b56b" flood-opacity=".18"/>
     </filter>
+    <radialGradient id="petal" cx="50%" cy="50%" r="70%">
+      <stop offset="0" stop-color="#fff6ff"/>
+      <stop offset="1" stop-color="#d8c8f7"/>
+    </radialGradient>
+    <linearGradient id="stem" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#57c45f"/>
+      <stop offset="1" stop-color="#2a9f4d"/>
+    </linearGradient>
   </defs>
 
-  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
-  <g filter="url(#shadow)">
-    <rect x="82" y="82" width="348" height="348" rx="88" fill="url(#card)"/>
-    <rect x="102" y="102" width="308" height="308" rx="72" fill="none" stroke="#ffffff" stroke-width="8" opacity=".84"/>
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#bg)" filter="url(#shadow)"/>
 
-    <g transform="translate(256 234)">
-      <g fill="#ff58d1">
-        <ellipse rx="40" ry="72" transform="translate(0 -78)"/>
-        <ellipse rx="40" ry="72" transform="translate(78 0) rotate(90)"/>
-        <ellipse rx="40" ry="72" transform="translate(0 78) rotate(180)"/>
-        <ellipse rx="40" ry="72" transform="translate(-78 0) rotate(270)"/>
-      </g>
-      <circle r="46" fill="#ff8d24"/>
-      <circle r="30" fill="#ffe76c"/>
-      <circle cx="-10" cy="-10" r="7" fill="#fff" opacity=".75"/>
-      <rect x="-6" y="48" width="12" height="80" rx="6" fill="url(#stem)"/>
-      <ellipse cx="-34" cy="92" rx="24" ry="14" fill="#67e48b" transform="rotate(-22 -34 92)"/>
-      <ellipse cx="34" cy="92" rx="24" ry="14" fill="#67e48b" transform="rotate(22 34 92)"/>
+  <!-- flower -->
+  <g transform="translate(128 118)">
+    <g fill="url(#petal)">
+      <ellipse cx="0" cy="-34" rx="20" ry="28"/>
+      <ellipse cx="29" cy="-11" rx="20" ry="28" transform="rotate(60 29 -11)"/>
+      <ellipse cx="18" cy="24" rx="20" ry="28" transform="rotate(120 18 24)"/>
+      <ellipse cx="-18" cy="24" rx="20" ry="28" transform="rotate(240 -18 24)"/>
+      <ellipse cx="-29" cy="-11" rx="20" ry="28" transform="rotate(300 -29 -11)"/>
     </g>
+    <circle r="18" fill="#ff8e2a"/>
+    <circle r="10" fill="#ffe56b"/>
   </g>
+
+  <!-- stem and leaves -->
+  <rect x="122" y="136" width="12" height="56" rx="6" fill="url(#stem)"/>
+  <path d="M122 162c-14-4-22 2-28 12 10 2 20-1 28-12z" fill="#5ecf73"/>
+  <path d="M134 162c14-4 22 2 28 12-10 2-20-1-28-12z" fill="#5ecf73"/>
+  <path d="M126 156c-8-6-17-6-26-2 7 5 16 7 26 2z" fill="#72db87" opacity=".95"/>
+  <path d="M130 156c8-6 17-6 26-2-7 5-16 7-26 2z" fill="#72db87" opacity=".95"/>
 </svg>

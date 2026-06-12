@@ -1092,6 +1092,49 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
 .footer-links { gap: 8px; }
 .footer-links span { color: rgba(104,116,138,0.7); }
 
+/* Exact reference logo override */
+.hero-top {
+  gap: 14px;
+  align-items: center;
+}
+.logo {
+  width: clamp(84px, 16vw, 100px);
+  height: clamp(84px, 16vw, 100px);
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  position: relative;
+  overflow: visible;
+}
+.logo::before,
+.logo::after,
+.logo-flower,
+.logo-burst {
+  display: none !important;
+}
+.logo-mark {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hero .eyebrow {
+  margin-bottom: 6px;
+  color: #718095;
+  font-size: 0.74rem;
+  letter-spacing: 0.11em;
+}
+.hero h1 {
+  font-size: clamp(2.35rem, 9vw, 3.35rem);
+  line-height: 0.94;
+  letter-spacing: -0.07em;
+  color: #243042;
+}
+.hero .intro {
+  max-width: 22rem;
+  font-size: 1rem;
+  line-height: 1.38;
+}
+
 /* Level-5 garden map + cuter pieces + compact controls */
 .garden-map-screen {
   display: grid;
@@ -1591,3 +1634,46 @@ body { overflow: hidden; }
 .preview-plot.locked { opacity: 0.42; }
 .footer-links { gap: 8px; }
 .footer-links span { color: rgba(104,116,138,0.7); }
+
+/* Exact reference logo override */
+.hero-top {
+  gap: 14px;
+  align-items: center;
+}
+.logo {
+  width: clamp(84px, 16vw, 100px);
+  height: clamp(84px, 16vw, 100px);
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  position: relative;
+  overflow: visible;
+}
+.logo::before,
+.logo::after,
+.logo-flower,
+.logo-burst {
+  display: none !important;
+}
+.logo-mark {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hero .eyebrow {
+  margin-bottom: 6px;
+  color: #718095;
+  font-size: 0.74rem;
+  letter-spacing: 0.11em;
+}
+.hero h1 {
+  font-size: clamp(2.35rem, 9vw, 3.35rem);
+  line-height: 0.94;
+  letter-spacing: -0.07em;
+  color: #243042;
+}
+.hero .intro {
+  max-width: 22rem;
+  font-size: 1rem;
+  line-height: 1.38;
+}
