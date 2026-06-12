@@ -62,7 +62,7 @@ body.legal-page .app-shell {
   box-shadow: 0 22px 55px rgba(69, 64, 115, 0.16);
   border-radius: 30px;
   padding: clamp(16px, 4vw, 24px);
-  backdrop-filter: blur(22px);
+  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
 }
@@ -619,7 +619,7 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
     radial-gradient(ellipse at 75% 84%, #ff61ee 0 19%, transparent 20%),
     radial-gradient(ellipse at 25% 84%, #ff61ee 0 19%, transparent 20%),
     radial-gradient(ellipse at 12% 31%, #ff61ee 0 20%, transparent 21%);
-  filter: drop-shadow(0 4px 6px rgba(117, 44, 152, 0.28));
+  filter: none;
 }
 .tile-flower::after {
   width: 13%;
