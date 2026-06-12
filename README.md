@@ -26,6 +26,7 @@ http://localhost:8080
 - Genre: match-3 puzzle
 - Audience: everyone, all ages
 - Theme: cheerful garden tiles drawn with original CSS artwork
+- Landing: game-style hero, garden preview, reward chips, visible settings, and player progress stats
 - Sharing: one simple Share button using the device/browser share sheet
 - Accessibility: no timer, large tap targets, simple language, gentle sounds, hint button
 - Mobile: responsive portrait layout, PWA manifest, offline service worker

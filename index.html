@@ -21,31 +21,64 @@
 <body>
   <main class="app-shell" aria-live="polite">
     <section class="card hero" id="home-screen">
+      <div class="petal petal-a" aria-hidden="true"></div>
+      <div class="petal petal-b" aria-hidden="true"></div>
+      <div class="petal petal-c" aria-hidden="true"></div>
+
       <div class="hero-top">
         <div class="logo" aria-hidden="true">
           <span class="logo-flower"></span>
         </div>
         <div>
-          <p class="eyebrow">Calm puzzle • no timer</p>
+          <p class="eyebrow">Relaxing match-3 adventure</p>
           <h1>Garden Match</h1>
-          <p class="intro">Collect the pink flower tile, unlock badges, and grow your cozy garden one level at a time.</p>
+          <p class="tagline">Grow Your Dream Garden!</p>
+          <p class="intro">Match flowers, collect badges, and unlock a cozy garden one level at a time.</p>
         </div>
       </div>
+
+      <div class="feature-chips" aria-label="Game highlights">
+        <span>⭐ 50 Levels</span>
+        <span>🏆 10 Badges</span>
+        <span>🌿 No Timer</span>
+      </div>
+
+      <section class="garden-preview" aria-label="Your garden preview">
+        <div>
+          <p class="eyebrow">Your garden grows</p>
+          <strong>Unlock flowers, bees, butterflies, and a garden crown.</strong>
+          <span>Reach higher levels to see your garden become more magical.</span>
+        </div>
+        <div class="garden-scene" aria-hidden="true">
+          <span class="garden-house">⌂</span>
+          <span class="garden-bloom bloom-1">🌱</span>
+          <span class="garden-bloom bloom-2">🌷</span>
+          <span class="garden-bloom bloom-3">🦋</span>
+          <span class="garden-bloom bloom-4">✨</span>
+        </div>
+      </section>
 
       <div class="goal-card" aria-label="Game goal">
         <div class="goal-icon tile-demo tile-flower" aria-hidden="true"></div>
         <div>
-          <strong>Goal tile: Pink Flower</strong>
-          <span>Match 3 or more pink flowers to complete each level.</span>
+          <p class="eyebrow">Today's goal</p>
+          <strong>Pink Flower</strong>
+          <span>Match 3+ pink flowers before your moves run out.</span>
         </div>
       </div>
 
       <div class="home-actions" aria-label="Game actions">
-        <button class="primary" id="start-button">Play Now</button>
-        <button class="ghost hidden" id="continue-button">Continue</button>
-        <button class="ghost" id="how-button">How to play</button>
-        <button class="ghost" id="share-button">Share</button>
+        <button class="primary" id="start-button">🌸 Start Growing</button>
+        <button class="ghost hidden" id="continue-button">🌿 Continue</button>
+        <button class="ghost" id="how-button">📖 How to play</button>
+        <button class="ghost" id="share-button">🎁 Share</button>
       </div>
+
+      <section class="player-stats" aria-label="Player progress">
+        <div><strong id="home-level-stat">1</strong><span>Current Level</span></div>
+        <div><strong id="home-badges-stat">0 / 10</strong><span>Badges Earned</span></div>
+        <div><strong>Every 5</strong><span>Reward Levels</span></div>
+      </section>
 
       <section class="settings-card" aria-label="Game settings">
         <div class="settings-title">
@@ -75,10 +108,10 @@
       <section class="badge-panel" aria-label="Unlocked milestone badges">
         <div class="badge-heading">
           <div>
-            <p class="eyebrow">Garden badges</p>
-            <p id="badge-summary" class="badge-summary">Reach Level 5 to unlock your first badge.</p>
+            <p class="eyebrow">Badge road</p>
+            <p id="badge-summary" class="badge-summary">Reach Level 5 to unlock Seedling Gardener.</p>
           </div>
-          <span class="badge-count">Every 5 levels</span>
+          <span class="badge-count">10 rewards</span>
         </div>
         <div id="badge-list" class="badge-list"></div>
       </section>

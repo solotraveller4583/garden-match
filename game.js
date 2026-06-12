@@ -76,6 +76,8 @@
     rewardProgress: document.querySelector('#reward-progress'),
     badgeList: document.querySelector('#badge-list'),
     badgeSummary: document.querySelector('#badge-summary'),
+    homeLevelStat: document.querySelector('#home-level-stat'),
+    homeBadgesStat: document.querySelector('#home-badges-stat'),
     dialog: document.querySelector('#message-dialog'),
     dialogTitle: document.querySelector('#dialog-title'),
     dialogText: document.querySelector('#dialog-text'),
@@ -96,6 +98,22 @@
   function updateContinueButton() {
     if (!els.continue) return;
     els.continue.classList.toggle('hidden', !hasSavedGame());
+    renderHomeStats();
+  }
+
+  function getSavedLevel() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+      return Math.max(1, Number(saved?.level) || state.level || 1);
+    } catch (_) {
+      return Math.max(1, state.level || 1);
+    }
+  }
+
+  function renderHomeStats() {
+    const unlocked = getUnlockedBadges();
+    if (els.homeLevelStat) els.homeLevelStat.textContent = getSavedLevel();
+    if (els.homeBadgesStat) els.homeBadgesStat.textContent = `${unlocked.length} / ${MILESTONE_BADGES.length}`;
   }
 
   function saveGame() {
@@ -194,8 +212,9 @@
       const latest = MILESTONE_BADGES.filter(badge => unlocked.includes(badge.level)).at(-1);
       els.badgeSummary.textContent = `${unlocked.length}/${MILESTONE_BADGES.length} unlocked. Latest: ${latest.emoji} ${latest.name}.`;
     } else {
-      els.badgeSummary.textContent = 'First badge at Level 5. New rewards every 5 levels.';
+      els.badgeSummary.textContent = 'Reach Level 5 to unlock Seedling Gardener.';
     }
+    renderHomeStats();
   }
 
   function nextRewardLevel() {
@@ -617,4 +636,5 @@
 
   updateContinueButton();
   renderBadges();
+  renderHomeStats();
 })();
