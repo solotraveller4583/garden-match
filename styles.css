@@ -1032,42 +1032,41 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
 .hero { gap: 12px; }
 .hero-top { gap: 12px; align-items: center; }
 .logo {
-  border-radius: 32px;
+  border-radius: 28px;
   background:
-    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.95) 0 7%, transparent 8%),
-    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.45) 0 8%, transparent 9%),
-    linear-gradient(145deg, #ffe1f4 0%, #ffacd9 48%, #ff84cf 100%);
+    linear-gradient(145deg, #fff1fa 0%, #ffdbef 45%, #ffc0e3 100%);
   box-shadow:
-    inset 0 -14px 20px rgba(171, 56, 131, 0.12),
-    inset 0 0 0 2px rgba(255,255,255,0.78),
+    inset 0 0 0 2px rgba(255,255,255,0.82),
+    inset 0 -10px 18px rgba(180, 70, 148, 0.10),
     0 16px 32px rgba(183, 85, 154, 0.24);
 }
 .logo::after { content: '✨'; right: 10px; top: 8px; font-size: 16px; }
 .logo-flower {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
+  border-radius: 22px;
   background:
-    radial-gradient(circle at 40% 44%, #7a294f 0 4%, transparent 5%),
-    radial-gradient(circle at 60% 44%, #7a294f 0 4%, transparent 5%),
-    radial-gradient(circle at 50% 60%, #ffbbd7 0 5%, transparent 6%),
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0 18%, transparent 19%);
+    radial-gradient(circle at 50% 47%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
+    radial-gradient(ellipse at 50% 16%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 84% 50%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 50% 84%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 16% 50%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.26) 0 18%, transparent 19%);
 }
 .logo-flower::before {
-  left: 5px;
-  top: 0;
-  width: 60px;
-  height: 56px;
+  left: 7px;
+  top: 6px;
+  width: 58px;
+  height: 58px;
   background:
     radial-gradient(circle at 50% 49%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
-    radial-gradient(ellipse at 50% 8%, #ff5fd2 0 16%, transparent 17%),
-    radial-gradient(ellipse at 86% 34%, #ff5fd2 0 17%, transparent 18%),
-    radial-gradient(ellipse at 73% 83%, #ff5fd2 0 16%, transparent 17%),
-    radial-gradient(ellipse at 27% 83%, #ff5fd2 0 16%, transparent 17%),
-    radial-gradient(ellipse at 14% 34%, #ff5fd2 0 17%, transparent 18%);
-  filter: drop-shadow(0 8px 10px rgba(180, 70, 148, 0.26));
+    radial-gradient(ellipse at 50% 8%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 92% 50%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 50% 92%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 8% 50%, #ff5fd2 0 14%, transparent 15%);
+  filter: drop-shadow(0 6px 8px rgba(180, 70, 148, 0.24));
 }
-.logo-flower::after { left: 31px; width: 10px; height: 29px; border-radius: 12px; }
+.logo-flower::after { left: 29px; top: 29px; width: 12px; height: 28px; border-radius: 12px; }
 .hero h1 { letter-spacing: -0.07em; }
 .intro { font-size: 0.98rem; }
 .tagline { margin-top: 4px; color: #ff4ea9; text-shadow: 0 1px 0 rgba(255,255,255,0.6); }
@@ -1523,42 +1522,41 @@ body { overflow: hidden; }
 .hero { gap: 12px; }
 .hero-top { gap: 12px; align-items: center; }
 .logo {
-  border-radius: 32px;
+  border-radius: 28px;
   background:
-    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.95) 0 7%, transparent 8%),
-    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.45) 0 8%, transparent 9%),
-    linear-gradient(145deg, #ffe1f4 0%, #ffacd9 48%, #ff84cf 100%);
+    linear-gradient(145deg, #fff1fa 0%, #ffdbef 45%, #ffc0e3 100%);
   box-shadow:
-    inset 0 -14px 20px rgba(171, 56, 131, 0.12),
-    inset 0 0 0 2px rgba(255,255,255,0.78),
+    inset 0 0 0 2px rgba(255,255,255,0.82),
+    inset 0 -10px 18px rgba(180, 70, 148, 0.10),
     0 16px 32px rgba(183, 85, 154, 0.24);
 }
 .logo::after { content: '✨'; right: 10px; top: 8px; font-size: 16px; }
 .logo-flower {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
+  border-radius: 22px;
   background:
-    radial-gradient(circle at 40% 44%, #7a294f 0 4%, transparent 5%),
-    radial-gradient(circle at 60% 44%, #7a294f 0 4%, transparent 5%),
-    radial-gradient(circle at 50% 60%, #ffbbd7 0 5%, transparent 6%),
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0 18%, transparent 19%);
+    radial-gradient(circle at 50% 47%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
+    radial-gradient(ellipse at 50% 16%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 84% 50%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 50% 84%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 16% 50%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.26) 0 18%, transparent 19%);
 }
 .logo-flower::before {
-  left: 5px;
-  top: 0;
-  width: 60px;
-  height: 56px;
+  left: 7px;
+  top: 6px;
+  width: 58px;
+  height: 58px;
   background:
     radial-gradient(circle at 50% 49%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
-    radial-gradient(ellipse at 50% 8%, #ff5fd2 0 16%, transparent 17%),
-    radial-gradient(ellipse at 86% 34%, #ff5fd2 0 17%, transparent 18%),
-    radial-gradient(ellipse at 73% 83%, #ff5fd2 0 16%, transparent 17%),
-    radial-gradient(ellipse at 27% 83%, #ff5fd2 0 16%, transparent 17%),
-    radial-gradient(ellipse at 14% 34%, #ff5fd2 0 17%, transparent 18%);
-  filter: drop-shadow(0 8px 10px rgba(180, 70, 148, 0.26));
+    radial-gradient(ellipse at 50% 8%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 92% 50%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 50% 92%, #ff5fd2 0 14%, transparent 15%),
+    radial-gradient(ellipse at 8% 50%, #ff5fd2 0 14%, transparent 15%);
+  filter: drop-shadow(0 6px 8px rgba(180, 70, 148, 0.24));
 }
-.logo-flower::after { left: 31px; width: 10px; height: 29px; border-radius: 12px; }
+.logo-flower::after { left: 29px; top: 29px; width: 12px; height: 28px; border-radius: 12px; }
 .hero h1 { letter-spacing: -0.07em; }
 .intro { font-size: 0.98rem; }
 .tagline { margin-top: 4px; color: #ff4ea9; text-shadow: 0 1px 0 rgba(255,255,255,0.6); }
