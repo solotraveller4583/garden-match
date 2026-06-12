@@ -74,17 +74,7 @@
         <button class="ghost" id="share-button">🎁 Share</button>
       </div>
 
-      <section class="player-stats" aria-label="Player progress">
-        <div><strong id="home-level-stat">1</strong><span>Current Level</span></div>
-        <div><strong id="home-badges-stat">0 / 10</strong><span>Badges Earned</span></div>
-        <div><strong>Every 5</strong><span>Reward Levels</span></div>
-      </section>
-
       <section class="settings-card" aria-label="Game settings">
-        <div class="settings-title">
-          <span>Game settings</span>
-          <small>Choose before playing</small>
-        </div>
         <div class="settings-grid" aria-label="Game settings">
           <label>
             Board size
@@ -102,6 +92,25 @@
               <option value="tricky">Tricky</option>
             </select>
           </label>
+        </div>
+      </section>
+
+      <section class="garden-map-card" id="garden-map-card" aria-label="Garden map progress">
+        <div class="map-heading">
+          <div>
+            <p class="eyebrow" id="garden-map-kicker">Unlocks at Level 5</p>
+            <h2 id="garden-map-title">Garden Map</h2>
+            <p id="garden-map-summary">Clear Level 5 to open your first garden area.</p>
+          </div>
+          <span class="map-badge" id="garden-map-badge">🔒 L5</span>
+        </div>
+        <div class="garden-map" id="garden-map" aria-hidden="true">
+          <div class="map-path"></div>
+          <div class="map-node node-l5 locked"><span>🌱</span><small>L5</small></div>
+          <div class="map-node node-l10 locked"><span>🌷</span><small>L10</small></div>
+          <div class="map-node node-l20 locked"><span>🦋</span><small>L20</small></div>
+          <div class="map-node node-l35 locked"><span>🐝</span><small>L35</small></div>
+          <div class="map-node node-l50 locked"><span>👑</span><small>L50</small></div>
         </div>
       </section>
 

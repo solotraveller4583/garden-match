@@ -76,8 +76,11 @@
     rewardProgress: document.querySelector('#reward-progress'),
     badgeList: document.querySelector('#badge-list'),
     badgeSummary: document.querySelector('#badge-summary'),
-    homeLevelStat: document.querySelector('#home-level-stat'),
-    homeBadgesStat: document.querySelector('#home-badges-stat'),
+    gardenMap: document.querySelector('#garden-map'),
+    gardenMapKicker: document.querySelector('#garden-map-kicker'),
+    gardenMapTitle: document.querySelector('#garden-map-title'),
+    gardenMapSummary: document.querySelector('#garden-map-summary'),
+    gardenMapBadge: document.querySelector('#garden-map-badge'),
     dialog: document.querySelector('#message-dialog'),
     dialogTitle: document.querySelector('#dialog-title'),
     dialogText: document.querySelector('#dialog-text'),
@@ -98,22 +101,6 @@
   function updateContinueButton() {
     if (!els.continue) return;
     els.continue.classList.toggle('hidden', !hasSavedGame());
-    renderHomeStats();
-  }
-
-  function getSavedLevel() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
-      return Math.max(1, Number(saved?.level) || state.level || 1);
-    } catch (_) {
-      return Math.max(1, state.level || 1);
-    }
-  }
-
-  function renderHomeStats() {
-    const unlocked = getUnlockedBadges();
-    if (els.homeLevelStat) els.homeLevelStat.textContent = getSavedLevel();
-    if (els.homeBadgesStat) els.homeBadgesStat.textContent = `${unlocked.length} / ${MILESTONE_BADGES.length}`;
   }
 
   function saveGame() {
@@ -189,6 +176,36 @@
   function saveUnlockedBadges(levels) {
     localStorage.setItem(BADGES_KEY, JSON.stringify([...new Set(levels)].sort((a, b) => a - b)));
     renderBadges();
+    renderGardenMap();
+  }
+
+  function renderGardenMap() {
+    if (!els.gardenMap) return;
+    const unlocked = getUnlockedBadges();
+    const hasMap = unlocked.some(level => level >= 5);
+    const highest = unlocked.length ? Math.max(...unlocked) : 0;
+    const mapLevels = [5, 10, 20, 35, 50];
+
+    els.gardenMap.classList.toggle('locked', !hasMap);
+    els.gardenMap.querySelectorAll('.map-node').forEach(node => {
+      const level = Number((node.className.match(/node-l(\d+)/) || [])[1]);
+      const isUnlocked = unlocked.includes(level) || highest >= level;
+      node.classList.toggle('unlocked', isUnlocked);
+      node.classList.toggle('locked', !isUnlocked);
+    });
+
+    if (hasMap) {
+      const nextLevel = mapLevels.find(level => highest < level);
+      if (els.gardenMapKicker) els.gardenMapKicker.textContent = 'Your garden map';
+      if (els.gardenMapTitle) els.gardenMapTitle.textContent = 'Garden Map Unlocked';
+      if (els.gardenMapSummary) els.gardenMapSummary.textContent = nextLevel ? `Your garden has started growing. Reach Level ${nextLevel} to unlock the next area.` : 'Your full garden is blooming — you are a Garden Master!';
+      if (els.gardenMapBadge) els.gardenMapBadge.textContent = nextLevel ? `Next L${nextLevel}` : '👑 Done';
+    } else {
+      if (els.gardenMapKicker) els.gardenMapKicker.textContent = 'Unlocks at Level 5';
+      if (els.gardenMapTitle) els.gardenMapTitle.textContent = 'Garden Map';
+      if (els.gardenMapSummary) els.gardenMapSummary.textContent = 'Clear Level 5 to open your first garden area.';
+      if (els.gardenMapBadge) els.gardenMapBadge.textContent = '🔒 L5';
+    }
   }
 
   function renderBadges() {
@@ -214,7 +231,7 @@
     } else {
       els.badgeSummary.textContent = 'Reach Level 5 to unlock Seedling Gardener.';
     }
-    renderHomeStats();
+    renderGardenMap();
   }
 
   function nextRewardLevel() {
@@ -256,9 +273,10 @@
     saveUnlockedBadges([...unlocked, badge.level]);
     launchConfetti();
     makeAudio(820, 0.18);
+    const extraReward = badge.level === 5 ? '\n\n🌿 Garden Map unlocked! Return to the home screen to see your garden start growing.' : '';
     showDialog(
       `${badge.emoji} ${badge.name} Unlocked!`,
-      `${badge.message}\n\nYou reached Level ${badge.level}. Keep going to grow your badge collection! Use Share Game on the home screen to tell friends.`,
+      `${badge.message}${extraReward}\n\nYou reached Level ${badge.level}. Keep going to grow your badge collection! Use Share on the home screen to tell friends.`,
       'Continue'
     );
     return true;
@@ -636,5 +654,4 @@
 
   updateContinueButton();
   renderBadges();
-  renderHomeStats();
 })();
