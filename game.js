@@ -56,6 +56,7 @@
   const els = {
     home: document.querySelector('#home-screen'),
     game: document.querySelector('#game-screen'),
+    mapScreen: document.querySelector('#map-screen'),
     board: document.querySelector('#board'),
     size: document.querySelector('#size-select'),
     difficulty: document.querySelector('#difficulty-select'),
@@ -63,6 +64,7 @@
     continue: document.querySelector('#continue-button'),
     how: document.querySelector('#how-button'),
     share: document.querySelector('#share-button'),
+    mapContinue: document.querySelector('#map-continue-button'),
     back: document.querySelector('#back-button'),
     sound: document.querySelector('#sound-button'),
     hint: document.querySelector('#hint-button'),
@@ -149,6 +151,7 @@
       els.difficulty.value = state.difficulty;
       els.sound.textContent = state.sound ? '🔊' : '🔇';
       els.home.classList.add('hidden');
+      els.mapScreen?.classList.add('hidden');
       els.game.classList.remove('hidden');
       renderBadges();
       render();
@@ -271,13 +274,14 @@
     saveUnlockedBadges([...unlocked, badge.level]);
     launchConfetti();
     makeAudio(820, 0.18);
-    const extraReward = badge.level === 5 ? '\n\n🌿 Garden Map unlocked! Return to the home screen to see your garden start growing.' : '';
-    showDialog(
-      `${badge.emoji} ${badge.name} Unlocked!`,
-      `${badge.message}${extraReward}\n\nYou reached Level ${badge.level}. Keep going to grow your badge collection! Use Share on the home screen to tell friends.`,
-      'Continue'
-    );
-    return true;
+    return badge;
+  }
+
+  function showLevel5GardenMap() {
+    els.game.classList.add('hidden');
+    els.home.classList.add('hidden');
+    els.mapScreen?.classList.remove('hidden');
+    saveGame();
   }
 
   async function shareAchievement(badge) {
@@ -554,13 +558,26 @@
       const completedLevel = state.level;
       const unlockedMilestone = unlockMilestoneIfNeeded(completedLevel);
       if (unlockedMilestone) {
-        els.dialog.addEventListener('close', () => {
-          const encouragement = LEVEL_COMPLETE_MESSAGES[(completedLevel - 1) % LEVEL_COMPLETE_MESSAGES.length];
-          showDialog('Wonderful garden!', `${encouragement}\n\nYou completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
-            state.level++;
-            startGame();
-          });
-        }, { once: true });
+        if (completedLevel === 5) {
+          showLevel5GardenMap();
+          return;
+        }
+        showDialog(
+          `${unlockedMilestone.emoji} ${unlockedMilestone.name} Unlocked!`,
+          `${unlockedMilestone.message}\n\nYou reached Level ${unlockedMilestone.level}. Keep growing your badge collection!`,
+          'Continue',
+          () => {
+            const encouragement = LEVEL_COMPLETE_MESSAGES[(completedLevel - 1) % LEVEL_COMPLETE_MESSAGES.length];
+            showDialog('Wonderful garden!', `${encouragement}\n\nYou completed Level ${completedLevel}!\nScore: ${state.score.toLocaleString()}\n\nReady for the next level?`, 'Next Level', () => {
+              state.level++;
+              startGame();
+            });
+          }
+        );
+        return;
+      }
+      if (completedLevel === 5) {
+        showLevel5GardenMap();
         return;
       }
       const encouragement = LEVEL_COMPLETE_MESSAGES[(completedLevel - 1) % LEVEL_COMPLETE_MESSAGES.length];
@@ -594,6 +611,7 @@
     configureFromInputs();
     createBoard();
     els.home.classList.add('hidden');
+    els.mapScreen?.classList.add('hidden');
     els.game.classList.remove('hidden');
     render();
     saveGame();
@@ -640,7 +658,14 @@
     'Got it'
   ));
   els.share.addEventListener('click', shareGame);
-  els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.home.classList.remove('hidden'); renderBadges(); updateContinueButton(); });
+  if (els.mapContinue) {
+    els.mapContinue.addEventListener('click', () => {
+      state.level = 6;
+      els.mapScreen.classList.add('hidden');
+      startGame();
+    });
+  }
+  els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.mapScreen?.classList.add('hidden'); els.home.classList.remove('hidden'); renderBadges(); updateContinueButton(); });
   els.sound.addEventListener('click', () => { state.sound = !state.sound; els.sound.textContent = state.sound ? '🔊' : '🔇'; });
   els.hint.addEventListener('click', showHint);
   els.shuffle.addEventListener('click', () => !state.busy && shuffleBoard(true));

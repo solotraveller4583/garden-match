@@ -119,6 +119,35 @@
       </div>
     </section>
 
+    <section class="card garden-map-screen hidden" id="map-screen" aria-label="Garden growth map">
+      <p class="eyebrow">Level 5 reward unlocked</p>
+      <h2>Your Garden Is Growing!</h2>
+      <p class="map-intro">You cleared Level 5. Your tiny garden has started to bloom.</p>
+
+      <div class="growth-scene" aria-label="Garden progress after Level 5">
+        <div class="sun"></div>
+        <div class="cloud cloud-a"></div>
+        <div class="cloud cloud-b"></div>
+        <div class="hill hill-back"></div>
+        <div class="hill hill-front"></div>
+        <div class="garden-path"></div>
+        <div class="garden-plot plot-1"><span></span></div>
+        <div class="garden-plot plot-2"><span></span></div>
+        <div class="garden-plot plot-3 locked-plot">?</div>
+        <div class="map-sign">L5</div>
+      </div>
+
+      <div class="map-progress-row" aria-label="Garden milestones">
+        <span class="done">L5 🌱</span>
+        <span>L10 🌷</span>
+        <span>L20 🦋</span>
+        <span>L50 👑</span>
+      </div>
+
+      <p class="map-note">Keep playing to unlock more flowers, butterflies, and garden surprises.</p>
+      <button class="primary" id="map-continue-button">Continue to Level 6</button>
+    </section>
+
     <dialog id="message-dialog">
       <form method="dialog" class="dialog-card">
         <h2 id="dialog-title">How to play</h2>

@@ -874,3 +874,194 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
   .game.card { min-height: calc(100dvh - 14px); gap: 5px; }
   .reward-progress { display: none; }
 }
+
+/* Level-5 garden map + cuter pieces + compact controls */
+.garden-map-screen {
+  display: grid;
+  gap: 13px;
+  text-align: center;
+  min-height: calc(100dvh - 20px);
+  align-content: center;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 227, 94, 0.45), transparent 22%),
+    radial-gradient(circle at 88% 18%, rgba(255, 113, 211, 0.20), transparent 22%),
+    rgba(255,255,255,0.88);
+}
+.garden-map-screen h2 {
+  font-size: clamp(2rem, 10vw, 3.25rem);
+  letter-spacing: -0.06em;
+}
+.map-intro,
+.map-note {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.36;
+}
+.growth-scene {
+  position: relative;
+  height: min(46vh, 330px);
+  min-height: 260px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #c9f4ff 0 48%, #9beaa8 49% 100%);
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,0.72), 0 18px 35px rgba(51, 128, 88, 0.16);
+}
+.sun {
+  position: absolute;
+  right: 28px;
+  top: 26px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7a8 0 48%, #ffcd45 49% 100%);
+  box-shadow: 0 0 34px rgba(255, 204, 69, 0.65);
+}
+.cloud {
+  position: absolute;
+  width: 84px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.86);
+  box-shadow: 24px -8px 0 3px rgba(255,255,255,0.86), 45px 2px 0 -2px rgba(255,255,255,0.86);
+}
+.cloud-a { left: 28px; top: 38px; }
+.cloud-b { right: 104px; top: 80px; transform: scale(0.74); opacity: 0.75; }
+.hill {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -52px;
+  height: 178px;
+  border-radius: 50% 50% 0 0;
+}
+.hill-back { background: #79d980; bottom: 34px; opacity: 0.72; }
+.hill-front { background: #4fc66d; }
+.garden-path {
+  position: absolute;
+  left: 41%;
+  bottom: -12px;
+  width: 78px;
+  height: 170px;
+  background: linear-gradient(180deg, #ffe4a1, #dca763);
+  clip-path: polygon(36% 0, 64% 0, 100% 100%, 0 100%);
+  opacity: 0.95;
+}
+.garden-plot {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 64px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #8b5a36, #6e432a);
+  box-shadow: inset 0 8px 0 rgba(255,255,255,0.10), 0 12px 18px rgba(71, 80, 54, 0.18);
+}
+.garden-plot span {
+  width: 66px;
+  height: 52px;
+  display: block;
+  background:
+    radial-gradient(circle at 20% 62%, #ff5cda 0 11%, transparent 12%),
+    radial-gradient(circle at 48% 44%, #ff5cda 0 12%, transparent 13%),
+    radial-gradient(circle at 76% 66%, #ff5cda 0 10%, transparent 11%),
+    linear-gradient(90deg, transparent 0 18%, #2aae58 19% 22%, transparent 23% 47%, #2aae58 48% 51%, transparent 52% 76%, #2aae58 77% 80%, transparent 81%);
+}
+.plot-1 { left: 35px; bottom: 34px; transform: rotate(-4deg); }
+.plot-2 { right: 42px; bottom: 52px; transform: rotate(5deg); }
+.plot-3 { left: calc(50% - 44px); bottom: 94px; }
+.locked-plot {
+  color: rgba(255,255,255,0.78);
+  font-weight: 950;
+  font-size: 1.8rem;
+  filter: saturate(0.65);
+  opacity: 0.58;
+}
+.map-sign {
+  position: absolute;
+  left: 18px;
+  bottom: 114px;
+  padding: 8px 12px;
+  border-radius: 13px;
+  background: #fff8d9;
+  color: #72522b;
+  font-weight: 950;
+  transform: rotate(-5deg);
+  box-shadow: 0 8px 14px rgba(61, 88, 50, 0.17);
+}
+.map-progress-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+.map-progress-row span {
+  min-height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  color: var(--muted);
+  font-weight: 950;
+  font-size: 0.78rem;
+}
+.map-progress-row .done {
+  background: linear-gradient(135deg, #fff7b5, #bff7c9);
+  color: #237348;
+}
+.garden-map-screen .primary { min-height: 50px; }
+
+.tile {
+  border-radius: 18px;
+  background: radial-gradient(circle at 35% 25%, #fff 0 18%, transparent 19%), linear-gradient(180deg, #ffffff, #f7f5ff);
+  box-shadow: 0 4px 0 rgba(36,48,66,0.08), inset 0 0 0 1px rgba(36,48,66,0.06), inset 0 -8px 14px rgba(160,170,210,0.08);
+}
+.tile-flower,
+.tile-demo.tile-flower {
+  background:
+    radial-gradient(circle at 50% 45%, #fff 0 34%, transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(255,92,218,0.18), transparent 62%),
+    linear-gradient(180deg, #ffe1fb 0%, #fff9ff 56%, #eaffed 100%);
+  box-shadow: 0 5px 0 rgba(193, 72, 164, 0.16), inset 0 0 0 3px rgba(255, 82, 211, 0.68), inset 0 0 22px rgba(255, 91, 218, 0.20);
+}
+.tile-flower::before {
+  width: 78%;
+  height: 68%;
+  left: 11%;
+  top: 7%;
+  background:
+    radial-gradient(circle at 50% 50%, #ff8a1d 0 12%, #ffe861 13% 22%, transparent 23%),
+    radial-gradient(ellipse at 50% 7%, #ff49d6 0 20%, transparent 21%),
+    radial-gradient(ellipse at 88% 31%, #ff49d6 0 20%, transparent 21%),
+    radial-gradient(ellipse at 75% 83%, #ff49d6 0 20%, transparent 21%),
+    radial-gradient(ellipse at 25% 83%, #ff49d6 0 20%, transparent 21%),
+    radial-gradient(ellipse at 12% 31%, #ff49d6 0 20%, transparent 21%);
+}
+.tile-flower::after {
+  height: 30%;
+  bottom: 4%;
+  background: linear-gradient(#26d36b, #118d47);
+}
+.tile-berry::before,
+.tile-blueberry::before,
+.tile-mushroom::before,
+.tile-clover::before,
+.tile-sunflower::before { filter: drop-shadow(0 3px 4px rgba(42, 52, 80, 0.18)); }
+
+.actions {
+  align-self: end;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  padding: 2px 2px 0;
+}
+.actions button {
+  min-height: 34px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  background: rgba(255,255,255,0.72);
+  box-shadow: inset 0 0 0 1px rgba(36,48,66,0.09);
+}
+
+@media (max-width: 520px) {
+  .actions button { min-height: 32px; font-size: 0.74rem; }
+  .growth-scene { min-height: 246px; }
+}
