@@ -1028,6 +1028,61 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
   .bee-a { left: 122px; top: 42px; }
 }
 
+/* Final landing/logo polish */
+.hero { gap: 12px; }
+.hero-top { gap: 12px; align-items: center; }
+.logo {
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.96) 0 7%, transparent 8%),
+    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.5) 0 8%, transparent 9%),
+    linear-gradient(145deg, #fff8bf 0%, #a7f5c8 47%, #93d8ff 100%);
+  box-shadow:
+    inset 0 -14px 20px rgba(24, 111, 83, 0.12),
+    inset 0 0 0 2px rgba(255,255,255,0.78),
+    0 16px 32px rgba(73, 160, 132, 0.22);
+}
+.logo::after { content: '✨'; right: 10px; top: 8px; font-size: 16px; }
+.logo-flower {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 44%, #453227 0 4%, transparent 5%),
+    radial-gradient(circle at 60% 44%, #453227 0 4%, transparent 5%),
+    radial-gradient(circle at 50% 60%, #ff9fbf 0 5%, transparent 6%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0 18%, transparent 19%);
+}
+.logo-flower::before {
+  left: 5px;
+  top: 0;
+  width: 60px;
+  height: 56px;
+  background:
+    radial-gradient(circle at 50% 49%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
+    radial-gradient(ellipse at 50% 8%, #ff62df 0 16%, transparent 17%),
+    radial-gradient(ellipse at 86% 34%, #ff62df 0 17%, transparent 18%),
+    radial-gradient(ellipse at 73% 83%, #ff62df 0 16%, transparent 17%),
+    radial-gradient(ellipse at 27% 83%, #ff62df 0 16%, transparent 17%),
+    radial-gradient(ellipse at 14% 34%, #ff62df 0 17%, transparent 18%);
+  filter: drop-shadow(0 8px 10px rgba(118, 62, 154, 0.26));
+}
+.logo-flower::after { left: 31px; width: 10px; height: 29px; border-radius: 12px; }
+.hero h1 { letter-spacing: -0.07em; }
+.intro { font-size: 0.98rem; }
+.tagline { margin-top: 4px; color: #ff4ea9; text-shadow: 0 1px 0 rgba(255,255,255,0.6); }
+.goal-card { background: linear-gradient(135deg, rgba(255,255,255,0.84), rgba(253, 238, 255, 0.92)); }
+.goal-icon { border-radius: 18px; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.8), 0 10px 18px rgba(191, 93, 177, 0.12); }
+.goal-icon::before { background: #ff7adf; }
+.goal-icon::after { background: linear-gradient(#27d870, #118f49); }
+.rewards-road { background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(242, 255, 242, 0.88)); box-shadow: inset 0 0 0 1px rgba(69, 156, 91, 0.11), 0 10px 24px rgba(45, 120, 80, 0.08); }
+.badge-summary { color: #617182; }
+.landing-map-preview { min-height: 92px; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.76), 0 12px 24px rgba(72, 123, 89, 0.1); }
+.preview-flag { background: #fff7c4; color: #6e512b; }
+.preview-plot.locked { opacity: 0.42; }
+.footer-links { gap: 8px; }
+.footer-links span { color: rgba(104,116,138,0.7); }
+
 /* Level-5 garden map + cuter pieces + compact controls */
 .garden-map-screen {
   display: grid;
@@ -1463,3 +1518,58 @@ body { overflow: hidden; }
   .butterfly-a { left: 64px; top: 70px; }
   .bee-a { left: 122px; top: 42px; }
 }
+
+/* Final landing/logo polish */
+.hero { gap: 12px; }
+.hero-top { gap: 12px; align-items: center; }
+.logo {
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 75% 22%, rgba(255,255,255,0.96) 0 7%, transparent 8%),
+    radial-gradient(circle at 28% 80%, rgba(255,255,255,0.5) 0 8%, transparent 9%),
+    linear-gradient(145deg, #fff8bf 0%, #a7f5c8 47%, #93d8ff 100%);
+  box-shadow:
+    inset 0 -14px 20px rgba(24, 111, 83, 0.12),
+    inset 0 0 0 2px rgba(255,255,255,0.78),
+    0 16px 32px rgba(73, 160, 132, 0.22);
+}
+.logo::after { content: '✨'; right: 10px; top: 8px; font-size: 16px; }
+.logo-flower {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 44%, #453227 0 4%, transparent 5%),
+    radial-gradient(circle at 60% 44%, #453227 0 4%, transparent 5%),
+    radial-gradient(circle at 50% 60%, #ff9fbf 0 5%, transparent 6%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0 18%, transparent 19%);
+}
+.logo-flower::before {
+  left: 5px;
+  top: 0;
+  width: 60px;
+  height: 56px;
+  background:
+    radial-gradient(circle at 50% 49%, #ff8d24 0 12%, #ffe56a 13% 20%, transparent 21%),
+    radial-gradient(ellipse at 50% 8%, #ff62df 0 16%, transparent 17%),
+    radial-gradient(ellipse at 86% 34%, #ff62df 0 17%, transparent 18%),
+    radial-gradient(ellipse at 73% 83%, #ff62df 0 16%, transparent 17%),
+    radial-gradient(ellipse at 27% 83%, #ff62df 0 16%, transparent 17%),
+    radial-gradient(ellipse at 14% 34%, #ff62df 0 17%, transparent 18%);
+  filter: drop-shadow(0 8px 10px rgba(118, 62, 154, 0.26));
+}
+.logo-flower::after { left: 31px; width: 10px; height: 29px; border-radius: 12px; }
+.hero h1 { letter-spacing: -0.07em; }
+.intro { font-size: 0.98rem; }
+.tagline { margin-top: 4px; color: #ff4ea9; text-shadow: 0 1px 0 rgba(255,255,255,0.6); }
+.goal-card { background: linear-gradient(135deg, rgba(255,255,255,0.84), rgba(253, 238, 255, 0.92)); }
+.goal-icon { border-radius: 18px; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.8), 0 10px 18px rgba(191, 93, 177, 0.12); }
+.goal-icon::before { background: #ff7adf; }
+.goal-icon::after { background: linear-gradient(#27d870, #118f49); }
+.rewards-road { background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(242, 255, 242, 0.88)); box-shadow: inset 0 0 0 1px rgba(69, 156, 91, 0.11), 0 10px 24px rgba(45, 120, 80, 0.08); }
+.badge-summary { color: #617182; }
+.landing-map-preview { min-height: 92px; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.76), 0 12px 24px rgba(72, 123, 89, 0.1); }
+.preview-flag { background: #fff7c4; color: #6e512b; }
+.preview-plot.locked { opacity: 0.42; }
+.footer-links { gap: 8px; }
+.footer-links span { color: rgba(104,116,138,0.7); }
