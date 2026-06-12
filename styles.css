@@ -73,7 +73,7 @@ body.legal-page .app-shell {
 .hero-top {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 14px;
+  gap: 18px;
   align-items: center;
   padding: 4px 2px 2px;
 }
@@ -215,7 +215,7 @@ h2 { font-size: 1.45rem; }
 .garden-preview {
   display: grid;
   grid-template-columns: 1fr 116px;
-  gap: 14px;
+  gap: 18px;
   align-items: center;
   padding: 14px;
   border-radius: 24px;
@@ -1094,12 +1094,12 @@ select { padding: 9px 8px; border-radius: 13px; font-size: 0.86rem; }
 
 /* Exact reference logo override */
 .hero-top {
-  gap: 14px;
+  gap: 18px;
   align-items: center;
 }
 .logo {
-  width: clamp(84px, 16vw, 100px);
-  height: clamp(84px, 16vw, 100px);
+  width: clamp(72px, 14vw, 88px);
+  height: clamp(72px, 14vw, 88px);
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
@@ -1637,12 +1637,12 @@ body { overflow: hidden; }
 
 /* Exact reference logo override */
 .hero-top {
-  gap: 14px;
+  gap: 18px;
   align-items: center;
 }
 .logo {
-  width: clamp(84px, 16vw, 100px);
-  height: clamp(84px, 16vw, 100px);
+  width: clamp(72px, 14vw, 88px);
+  height: clamp(72px, 14vw, 88px);
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
