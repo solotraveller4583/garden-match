@@ -194,7 +194,7 @@
       const latest = MILESTONE_BADGES.filter(badge => unlocked.includes(badge.level)).at(-1);
       els.badgeSummary.textContent = `${unlocked.length}/${MILESTONE_BADGES.length} unlocked. Latest: ${latest.emoji} ${latest.name}.`;
     } else {
-      els.badgeSummary.textContent = 'Reach Level 5 to unlock your first badge. New badges arrive every 5 levels.';
+      els.badgeSummary.textContent = 'First badge at Level 5. New rewards every 5 levels.';
     }
   }
 
@@ -536,7 +536,7 @@
       return;
     }
     if (state.moves <= 0) {
-      showDialog('Almost there!', `You collected ${state.collected} of ${state.target} flowers.\nTry again with a fresh board.`, 'Try Again', () => startGame());
+      showDialog('Almost there!', `You collected ${state.collected} of ${state.target} ${GOAL_NAME}.\nTry again with a fresh board.`, 'Try Again', () => startGame());
       return;
     }
     if (!findMove()) {
@@ -567,7 +567,7 @@
   async function shareGame() {
     const shareData = {
       title: 'Garden Match',
-      text: 'Play Garden Match — a calm puzzle game for all ages!',
+      text: 'Play Garden Match with me — collect pink flowers, unlock badges, and beat my level!',
       url: window.location.origin + window.location.pathname.replace(/[^/]*$/, '')
     };
 
