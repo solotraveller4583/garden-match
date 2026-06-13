@@ -12,16 +12,6 @@
     radial-gradient(circle at 86% 96%, rgba(255, 141, 203, 0.22) 0 14%, transparent 15%),
     linear-gradient(180deg, #99dcf5 0 34%, #d7f4ff 35%, #f5ffd7 64%, #effcc8 100%);
 }
-#home-screen .landing-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  pointer-events: none;
-  z-index: 20;
-}
 #home-screen.hero::before,
 #home-screen.hero::after {
   content: '';
