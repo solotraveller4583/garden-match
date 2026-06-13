@@ -43,7 +43,6 @@
     size: 7,
     difficulty: 'normal',
     board: [],
-    boardCells: [],
     selected: null,
     score: 0,
     moves: 26,
@@ -260,7 +259,7 @@
 
   function launchConfetti() {
     const pieces = ['🌸', '🌼', '✨', '🍀', '🦋', '🌱'];
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 34; i++) {
       const piece = document.createElement('span');
       piece.className = 'confetti-piece';
       piece.textContent = pieces[rand(pieces.length)];
@@ -392,50 +391,24 @@
     if (!findMove()) shuffleBoard(false);
   }
 
-  function ensureBoardCells() {
-    const expected = state.size * state.size;
-    if (state.boardCells.length === expected) return;
+  function render() {
+    document.documentElement.style.setProperty('--board-size', state.size);
+    els.board.innerHTML = '';
+    els.board.style.setProperty('--board-size', state.size);
 
-    els.board.replaceChildren();
-    state.boardCells = [];
     for (let row = 0; row < state.size; row++) {
       for (let col = 0; col < state.size; col++) {
         const button = document.createElement('button');
+        const tileValue = get(row, col);
+        button.className = `tile tile-${tileValue}`;
         button.type = 'button';
         button.dataset.row = row;
         button.dataset.col = col;
-        button.addEventListener('click', () => onTileTap(row, col));
-        els.board.appendChild(button);
-        state.boardCells.push(button);
-      }
-    }
-  }
-
-  function setSelectedTile(nextSelected) {
-    const prev = state.selected;
-    state.selected = nextSelected;
-    if (prev) {
-      const prevTile = state.boardCells[prev.row * state.size + prev.col];
-      if (prevTile) prevTile.classList.remove('selected');
-    }
-    if (nextSelected) {
-      const nextTile = state.boardCells[nextSelected.row * state.size + nextSelected.col];
-      if (nextTile) nextTile.classList.add('selected');
-    }
-  }
-
-  function render() {
-    document.documentElement.style.setProperty('--board-size', state.size);
-    els.board.style.setProperty('--board-size', state.size);
-    ensureBoardCells();
-
-    for (let row = 0; row < state.size; row++) {
-      for (let col = 0; col < state.size; col++) {
-        const button = state.boardCells[row * state.size + col];
-        const tileValue = get(row, col);
-        button.className = `tile tile-${tileValue}${state.selected && state.selected.row === row && state.selected.col === col ? ' selected' : ''}`;
         button.dataset.tile = tileValue;
         button.setAttribute('aria-label', `${TILE_LABELS[tileValue] || 'garden'} tile at row ${row + 1}, column ${col + 1}`);
+        if (state.selected && state.selected.row === row && state.selected.col === col) button.classList.add('selected');
+        button.addEventListener('click', () => onTileTap(row, col));
+        els.board.appendChild(button);
       }
     }
     updateHud();
@@ -454,19 +427,22 @@
     if (state.busy) return;
     const current = { row, col };
     if (!state.selected) {
-      setSelectedTile(current);
+      state.selected = current;
       makeAudio(420, 0.035);
+      render();
       return;
     }
 
     if (state.selected.row === row && state.selected.col === col) {
-      setSelectedTile(null);
+      state.selected = null;
+      render();
       return;
     }
 
     if (!isAdjacent(state.selected, current)) {
-      setSelectedTile(current);
+      state.selected = current;
       makeAudio(400, 0.035);
+      render();
       return;
     }
 
@@ -516,8 +492,7 @@
 
   function markMatches(matches) {
     matches.forEach(id => {
-      const [row, col] = id.split('-').map(Number);
-      const tile = state.boardCells[row * state.size + col];
+      const tile = els.board.querySelector(`[data-row="${id.split('-')[0]}"][data-col="${id.split('-')[1]}"]`);
       if (tile) tile.classList.add('pop');
     });
   }
@@ -657,10 +632,10 @@
     const move = findMove();
     if (!move) return shuffleBoard(false);
     makeAudio(650, 0.06);
-    for (const pos of move) {
-      const tile = state.boardCells[pos.row * state.size + pos.col];
+    move.flatMap(pos => [pos]).forEach(pos => {
+      const tile = els.board.querySelector(`[data-row="${pos.row}"][data-col="${pos.col}"]`);
       if (tile) tile.classList.add('hint');
-    }
+    });
   }
 
   function startGame() {

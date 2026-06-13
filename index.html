@@ -18,61 +18,47 @@
   <title>Garden Match</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="landing-overrides.css" />
 </head>
 <body>
   <main class="app-shell" aria-live="polite">
     <section class="card hero" id="home-screen">
       <div class="hero-top">
         <div class="logo" aria-hidden="true">
-          <img class="logo-mark" src="hero-flower.svg" alt="" />
+          <img class="logo-mark" src="icon.svg" alt="" />
         </div>
         <div>
           <p class="eyebrow">EVERYONE-FRIENDLY PUZZLE</p>
-          <h1><span class="title-green">Garden</span><br /><span class="title-pink">Match</span></h1>
-          <p class="intro">Match the <span class="highlight-pink">bright pink flower</span>, earn <span class="highlight-green">badges</span>, and <span class="highlight-grow">grow</span> your garden.</p>
+          <h1>Garden Match</h1>
+          <p class="intro">Match the bright pink flower, earn badges, and grow your garden.</p>
         </div>
       </div>
 
       <section class="settings-card" aria-label="Game settings">
         <div class="settings-grid" aria-label="Game settings">
-          <label class="control-card">
-            <span class="control-label">Board Size</span>
-            <span class="control-field">
-              <span class="control-icon control-icon-grid" aria-hidden="true"></span>
-              <select id="size-select">
-                <option value="6">Easy 6 × 6</option>
-                <option value="7" selected>Classic 7 × 7</option>
-                <option value="8">Big 8 × 8</option>
-              </select>
-              <span class="control-chevron" aria-hidden="true">⌄</span>
-            </span>
+          <label>
+            Board size
+            <select id="size-select">
+              <option value="6">Easy 6 × 6</option>
+              <option value="7" selected>Classic 7 × 7</option>
+              <option value="8">Big 8 × 8</option>
+            </select>
           </label>
-          <label class="control-card">
-            <span class="control-label">Difficulty</span>
-            <span class="control-field">
-              <span class="control-icon control-icon-sprout" aria-hidden="true"></span>
-              <select id="difficulty-select">
-                <option value="relaxed">Relaxed</option>
-                <option value="normal" selected>Normal</option>
-                <option value="tricky">Tricky</option>
-              </select>
-              <span class="control-chevron" aria-hidden="true">⌄</span>
-            </span>
+          <label>
+            Difficulty
+            <select id="difficulty-select">
+              <option value="relaxed">Relaxed</option>
+              <option value="normal" selected>Normal</option>
+              <option value="tricky">Tricky</option>
+            </select>
           </label>
         </div>
       </section>
 
       <div class="goal-card" aria-label="Game goal">
         <div class="goal-icon tile-demo tile-flower" aria-hidden="true"></div>
-        <div class="goal-copy">
+        <div>
           <strong>Collect Pink Flowers</strong>
           <span>Match 3+ of this flower tile to clear each level.</span>
-        </div>
-        <div class="goal-samples" aria-hidden="true">
-          <span class="tile-demo tile-flower"></span>
-          <span class="tile-demo tile-flower"></span>
-          <span class="tile-demo tile-flower"></span>
         </div>
       </div>
 
