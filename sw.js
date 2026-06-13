@@ -1,11 +1,13 @@
-const CACHE_NAME = 'garden-match-v31';
+const CACHE_NAME = 'garden-match-v32';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
+  './landing-overrides.css',
   './game.js',
   './manifest.webmanifest',
   './icon.svg',
+  './hero-flower.svg',
   './icon-192.png',
   './icon-512.png',
   './apple-touch-icon.png',
