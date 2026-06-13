@@ -1,4 +1,4 @@
-const CACHE_NAME = 'garden-match-v32';
+const CACHE_NAME = 'garden-match-v33';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,7 @@ const ASSETS = [
   './manifest.webmanifest',
   './icon.svg',
   './hero-flower.svg',
+  './landing-reference.png',
   './icon-192.png',
   './icon-512.png',
   './apple-touch-icon.png',

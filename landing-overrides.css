@@ -12,6 +12,16 @@
     radial-gradient(circle at 86% 96%, rgba(255, 141, 203, 0.22) 0 14%, transparent 15%),
     linear-gradient(180deg, #99dcf5 0 34%, #d7f4ff 35%, #f5ffd7 64%, #effcc8 100%);
 }
+#home-screen .landing-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+  z-index: 20;
+}
 #home-screen.hero::before,
 #home-screen.hero::after {
   content: '';
@@ -42,10 +52,10 @@
 #home-screen.hero > * { position: relative; z-index: 1; }
 
 #home-screen .hero-top {
-  grid-template-columns: minmax(0, 0.96fr) minmax(200px, 1.04fr);
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) minmax(290px, 1.1fr);
+  gap: 10px;
   align-items: end;
-  padding: 4px 2px 0;
+  padding: 10px 10px 0 16px;
 }
 #home-screen .hero-top > :first-child { order: 2; }
 #home-screen .hero-top > :last-child { order: 1; }
@@ -79,9 +89,9 @@
 #home-screen .eyebrow::after { right: -12px; clip-path: polygon(0 0, 100% 50%, 0 100%); }
 
 #home-screen .hero h1 {
-  font-size: clamp(2.75rem, 11vw, 4.35rem);
-  line-height: 0.9;
-  letter-spacing: -0.085em;
+  font-size: clamp(3.2rem, 12vw, 5.1rem);
+  line-height: 0.88;
+  letter-spacing: -0.09em;
   color: #fff;
   text-shadow:
     -5px -5px 0 rgba(255,255,255,0.86),
@@ -115,9 +125,9 @@
 #home-screen .highlight-grow { color: #2d8d4b; }
 
 #home-screen .logo {
-  width: clamp(200px, 40vw, 300px);
-  height: clamp(230px, 46vw, 340px);
-  margin-right: -2px;
+  width: clamp(240px, 46vw, 340px);
+  height: clamp(270px, 52vw, 390px);
+  margin-right: -6px;
   border-radius: 36px;
   position: relative;
   background:
