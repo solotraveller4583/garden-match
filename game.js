@@ -641,6 +641,7 @@
   function startGame() {
     configureFromInputs();
     createBoard();
+    document.body.classList.remove('home-page');
     els.home.classList.add('hidden');
     els.mapScreen?.classList.add('hidden');
     els.game.classList.remove('hidden');
@@ -696,7 +697,7 @@
       startGame();
     });
   }
-  els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.mapScreen?.classList.add('hidden'); els.home.classList.remove('hidden'); renderBadges(); updateContinueButton(); });
+  els.back.addEventListener('click', () => { els.game.classList.add('hidden'); els.mapScreen?.classList.add('hidden'); els.home.classList.remove('hidden'); document.body.classList.add('home-page'); renderBadges(); updateContinueButton(); });
   els.sound.addEventListener('click', () => { state.sound = !state.sound; els.sound.textContent = state.sound ? '🔊' : '🔇'; });
   els.hint.addEventListener('click', showHint);
   els.shuffle.addEventListener('click', () => !state.busy && shuffleBoard(true));
@@ -710,6 +711,7 @@
     window.__gardenMatchDebug = { showGardenMap, state };
   }
 
+  document.body.classList.add('home-page');
   updateContinueButton();
   renderBadges();
 })();
